@@ -8,13 +8,8 @@ use App\Models\cadastrotb;
 
 class CadastrotbController extends Controller
 {
-    public function index(){
-        return view('index');
-    }
-
-    public function showFormCadastro(){
-        return view('Telacadastro');
-    }
+   
+    
 
     public function storecadastro(Request $request){
         $cadastro= $request->validate([
@@ -23,12 +18,12 @@ class CadastrotbController extends Controller
             'senha'=>'string|required'
         ]);
 
-        cadastro::create($cadastro);
-        return redirect::route('Index');
+        cadastrotb::create($cadastro);
+        return redirect::route('index');
     }
 
 
-    public function update(cadastro $id, Request $request){
+    public function update(cadastrotb $id, Request $request){
         $cadastro = $request->validate([
             'nome'=>'string|required',
             'email'=>'string|required',
@@ -37,11 +32,11 @@ class CadastrotbController extends Controller
 
         $id->fill($cadastro);
         $id->save();
-        return redirect::route('Home');
+        return redirect::route('index');
     }
 
 
-    public function show(cadastro $id){
-        return view('EditarConta', ['cadastrotb'=> $id]);
+    public function show(cadastrotb $id){
+        return view('Editar-cadastro', ['cadastrotb'=> $id]);
     }
 }

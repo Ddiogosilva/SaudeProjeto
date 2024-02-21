@@ -11,12 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('historicotb', function (Blueprint $table) {
+        Schema::create('historicotbs', function (Blueprint $table) {
             $table->string('nomeFK');
             $table->string('colesterol_HDL');
             $table->string('colesterol_LDL');
             $table->string('glicemia');
             $table->string('pressao');
+            $table->timestamps();
         });
     }
 

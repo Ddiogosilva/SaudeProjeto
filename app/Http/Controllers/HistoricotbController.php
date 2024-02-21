@@ -10,9 +10,7 @@ class HistoricotbController extends Controller
 {
     
 
-    public function showFormHistorico(){
-        return view('TelaCadastro');
-    }
+    
 
     public function storeHistorico(Request $request){
         $historico= $request->validate([
@@ -24,24 +22,24 @@ class HistoricotbController extends Controller
 
         ]);
 
-        historico::create($historico);
+        historicotb::create($historico);
         return redirect::route('Home');
     }
 
 
     public function showGerenciador(Request $request){
-       $dados= historico::query();
-       $dados->when($request->nome,function($query,$nome){
+       $dadoshistorico= historicotb::query();
+       $dadoshistorico->when($request->nome,function($query,$nome){
         $query->where('nomeFK', 'like' , '%'.$nome.'%');
        });
 
        $dadoshistorico = $dadoshistorico->get();
 
-       return view('Hitórico', ['historicotb' => $dadoshistorico]);
+       return view('Historico', ['historicotb' => $dadoshistorico]);
     }
 
 
-    public function destroy(historico $id){
+    public function destroy(historicotb $id){
         $id->delete();
         return redirect::route('historicotodos');
         

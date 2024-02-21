@@ -10,7 +10,7 @@
 <body>
 
     <button type="button" class="btn btn-primary btn-lg">Voltar</button>
-    <h1>Medir Glicose</h1>
+    <h1>Medir glicemia</h1>
 
     <h1>Inserir taxas de Valores</h1>
 

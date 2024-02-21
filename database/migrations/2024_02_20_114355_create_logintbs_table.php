@@ -11,10 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('logintb', function (Blueprint $table) {
+        Schema::create('logintbs', function (Blueprint $table) {
             $table->id('idLogin');
             $table->string('emailFK');
             $table->string('senhaFK');
+            $table->timestamps();
+    
         });
     }
 

@@ -11,11 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('cadastrotb', function (Blueprint $table) {
+        Schema::create('cadastrotbs', function (Blueprint $table) {
             $table->id('idCadastro');
             $table->string('nome');
             $table->string('email');
             $table->string('senha');
+            $table->timestamps();
         });
     }
 

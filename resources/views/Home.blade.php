@@ -21,10 +21,28 @@
           <a class="nav-link active" aria-current="page" href="/">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Features</a>
+          <a class="nav-link" href="/Cadastro">cadastrar</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Pricing</a>
+          <a class="nav-link" href="/historicotodos">historico</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/Editar">alterar</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/colesterol">colesterol</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/glicemia">glicemia</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/pressao">pressao</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/suporte">suporte</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/duvidas">duvidas</a>
         </li>
         
       </ul>
