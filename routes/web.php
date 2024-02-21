@@ -1,22 +1,36 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use app\Http\Controllers\CadastrotbController;
+use App\Http\Controllers\CadastrotbController;
+use App\Http\Controllers\HistoricotbController;
 
- // --rotas cadastroController
-Route::get('/',[CadastrotbController::class,'index'])->name('Home');
+// --rotas cadastroController
+
+
+route::get('/',[CadastrotbController::class,'index'])->name('index');
 
 Route::get('/Cadastro',[CadastrotbController::class,'showFormCadastro'])->name('formulario-cadastro');
 
 Route::post('/Cadastro',[CadastrotbController::class,'storecadastro'])->name('cadastrar-user');
 
-Route::get('/Editar/{id}',[CadastrotbController::class,'show'])->name('Editar-agencia');
-Route::put('/EditarAgencia/{id}',[CadastrotbController::class,'update'])->name('EditarBanco-agencia');
+Route::get('/Editar/{id}',[CadastrotbController::class,'show'])->name('Editar-cadastro');
+Route::put('/EditarCadastro/{id}',[CadastrotbController::class,'update'])->name('EditarBanco-alterar');
 
 
-// -- rotas logincontroller
+// -- rotas loginController
 
 
 
-// -- rotas historicocontroller
 
+
+
+// -- rotas historicoController
+
+Route::get('/historicotodos',[HistoricotbController::class,'showGerenciador'])->name('historico-todos');
+
+Route::post('/historicoadd',[HistoricotbController::class,'storeHistorico'])->name('cadastrar-dados');
+
+Route::delete('/delete-historico/{id}',[HistoricotbController::class,'destroy'])->name('delete-historico');
+
+Route::get('/historico/{id}',[HistoricotbController::class,'show'])->name('alterar-historico');
+Route::put('/historicoBanco/{id}',[HistoricotbController::class,'update'])->name('alterarBanco-hitorico');

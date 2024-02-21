@@ -7,6 +7,8 @@
         <figcaption>Tela de Cadastro</figcaption>
     </header>
     <form method="post" action="{{route('cadastrar-user')}}" class="row g-3 needs-validation" novalidate>
+
+      @csrf
         <div class="col-md-8">
           <label for="validationCustom01" class="form-label">Digite seu nome</label>
           <input type="text" class="form-control" name="nome" id="validationCustom01"required>        

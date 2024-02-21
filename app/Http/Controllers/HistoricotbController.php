@@ -8,9 +8,7 @@ use App\Models\historicotb;
 
 class HistoricotbController extends Controller
 {
-    public function index(){
-        return view('Home');
-    }
+    
 
     public function showFormHistorico(){
         return view('TelaCadastro');
@@ -18,13 +16,16 @@ class HistoricotbController extends Controller
 
     public function storeHistorico(Request $request){
         $historico= $request->validate([
-            'xxx'=>'string|required',
-            'xxx'=>'string|required',
-            'xxx'=>'string|required'
+            'nomeFK'=>'string|required',
+            'colesterol_HDL'=>'string|required',
+            'colesterol_LDL'=>'string|required',
+            'glicemia'=>'string|required',
+            'pressao'=>'string|required'
+
         ]);
 
         historico::create($historico);
-        return redirect::route('index');
+        return redirect::route('Home');
     }
 
 
@@ -42,25 +43,27 @@ class HistoricotbController extends Controller
 
     public function destroy(historico $id){
         $id->delete();
-        return redirect::route('xxx');
+        return redirect::route('historicotodos');
         
     }
 
 
     public function update(historico $id, Request $request){
         $historico = $request->validate([
-            'xxx'=>'string|required',
-            'xxx'=>'string|required',
-            'xxx'=>'string|required'
+            'nomeFK'=>'string|required',
+            'colesterol_HDL'=>'string|required',
+            'colesterol_LDL'=>'string|required',
+            'glicemia'=>'string|required',
+            'pressao'=>'string|required'
         ]);
 
         $id->fill($historico);
         $id->save();
-        return redirect::route('xxx');
+        return redirect::route('historicotodos');
     }
 
 
-    public function show(historico $id){
-        return view('xxx', ['historicotb'=> $id]);
+    public function show(historico $nome){
+        return view('historicotodos', ['historicotb'=> $id]);
     }
 }

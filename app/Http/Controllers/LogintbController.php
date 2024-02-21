@@ -8,9 +8,7 @@ use App\Models\loguintb;
 
 class LogintbController extends Controller
 {
-    public function index(){
-        return view('Home');
-    }
+    
 
     public function showFormLogin(){
         return view('TelaCadastro');
@@ -26,17 +24,6 @@ class LogintbController extends Controller
         return redirect::route('Home');
     }
 
-
-    public function showGerenciador(Request $request){
-       $dados= login::query();
-       $dados->when($request->xxx,function($query,$nome){
-        $query->where('xxx', 'like' , '%'.$nome.'%');
-       });
-
-       $dadoslogin = $dadoslogin->get();
-
-       return view('xxx', ['logintb' => $dadoslogin]);
-    }
 
 
     public function destroy(login $id){
