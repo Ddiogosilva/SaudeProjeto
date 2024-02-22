@@ -9,48 +9,6 @@
 </head>
 <body>
 
-<nav class="navbar navbar-expand-lg bg-body-tertiary">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="#">Navbar</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="/">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/Cadastro">cadastrar</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/historicotodos">historico</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/Editar">alterar</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/colesterol">colesterol</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/glicemia">glicemia</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/pressao">pressao</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/suporte">suporte</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/duvidas">duvidas</a>
-        </li>
-        
-      </ul>
-    </div>
-  </div>
-</nav>
-
-    
 
     @yield('content')
       

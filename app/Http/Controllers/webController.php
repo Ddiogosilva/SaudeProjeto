@@ -32,7 +32,5 @@ class webController extends Controller
         return view('Duvidas');
     }
 
-    public function showFormCadastro(){
-        return view('Telacadastro');
-    }
+    
 }
