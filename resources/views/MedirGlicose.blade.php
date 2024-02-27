@@ -21,7 +21,7 @@
         <!-- Navigation-->
         <nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
             <div class="container">
-                <a class="navbar-brand" href="#page-top">* Controle de pressão</a>
+                <a class="navbar-brand" href="#page-top">* Controle da glicose </a>
                 <button class="navbar-toggler text-uppercase font-weight-bold bg-primary text-white rounded" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                     Menu
                     <i class="fas fa-bars"></i>
@@ -47,32 +47,27 @@
                 @endif
 
                     </ul><div class=""></div>
-                </div>>
+                </div>
             </div>
         </nav>
     </header>
-        <!-- Pressao Section-->
-    <form class="medirGlicose" method="post" action="#">    
-        <section class="page-section pressao" id="pressao">
-            <div class="container">
-                <!-- Portfolio Section Heading-->
-                <h1>INSERIR TAXAS DE VALORES</h1>
-                <div class="form-floating mb-3">
-                    <input class="form-control" id="valor" type="number" placeholder="Digite primeiro valor aqui..." data-sb-validations="required" />
-                    <label for="number">Inserir primeiro valor aqui</label>
-                    <div class="invalid-feedback" data-sb-feedback="name:required">Um valor é necessário.</div>
+
+        <!-- glicemia Section-->
+    <form class="medirGlicose" method="post" action="#">
+        <section class="page-section glicemia" id="glicemia">
+            <div class="container" >
+                <!-- glicemia Section Heading-->
+                <h1>INSERIR TAXA</h1><!--onde vai ficar o conteúdo-->
+                <div class="col-md-3">
+                    <label for="inputEmail4" class="form-label">Inserir valor</label>
+                    <input class="form-control" id="valor" type="number" data-sb-validations="required" />
+                    <div class="invalid-feedback" data-sb-feedback="name:required">um valor numérico é necessário.</div>
                 </div>
-            <div class="form-floating mb-3">
-                <input class="form-control" id="name" type="number" placeholder="Digite o Segundo valor..." data-sb-validations="required" />
-                <label for="number">Inserir Segundo valor aqui</label>
-                <div class="invalid-feedback" data-sb-feedback="name:required">Um valor é necessário.</div>
+                <p></p>
+                <button type="submit" class="btn btn-primary">Enviar</button>
             </div>
-            <button type="submit" class="btn btn-primary">Enviar</button>
-        </div>
         </section>
-    </form>    
-
-
+    </form>
         <!-- Footer-->
         <footer class="footer text-center">
             <div class="container">

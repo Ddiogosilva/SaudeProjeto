@@ -1,5 +1,4 @@
-@extends('Home')
-@section('content')
+
 
 
     <a href="{{Route('index')}}"> 
@@ -46,4 +45,3 @@
     <p>Copyringht 2020 Leticia <br>
     Slogan: Sua saúde inteligente.</p>
 </footer>
-@endsection

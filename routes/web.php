@@ -52,10 +52,13 @@ Route::put('/historicoBanco/{id}',[HistoricotbController::class,'update'])->name
  
 Route::get('/colesterol',[webController::class,'showFormCoslesterol'])->name('colesterol-form');
  
-Route::get('/glicemia',[webController::class,'showFormGlicemia'])->name('glicemia-form');
+Route::get('/glicose',[webController::class,'showFormGlicose'])->name('glicose-form');
  
 Route::get('/pressao',[webController::class,'showFormPressao'])->name('pressao-form');
  
 Route::get('/suporte',[webController::class,'showFormSuporte'])->name('suporte-form');
  
 Route::get('/duvidas',[webController::class,'showFormDuvidas'])->name('duvidas-form');
+
+Route::post('/contato',[webController::class,'enviaContato'])->name('envia-Contato');
+

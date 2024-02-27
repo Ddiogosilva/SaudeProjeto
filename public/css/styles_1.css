@@ -78,55 +78,7 @@
   --bs-code-color: #d63384;
   --bs-highlight-bg: #fff3cd;
 }
-.header{
-  position:fixed;
-}
 
-.login{
-  margin-left: 25vw;
-  margin-right: 5vw;
-  background: #fff;
-  margin-top: 22vw;
-  width:45vw;
-  margin-bottom: 17vh;
-  
-
-}
-.medirGlicose{
-  margin-left: 25vw;
-  margin-bottom: 15vh;
-  
-}
-.cadastre{
-  margin: 10vw 22vh;
-  width: 40vw;
-}
-.forduvida{
-  margin-bottom: 5vw;
-  margin-top: 5vw;
-}
-.duvidas{
-  text-align: center;
-  
-  height: 70vh;
-}
-.colesterol{
-  width: 40vw;
-  margin: 25px 25vw;
-  
-  
-}
-.textosangue{
-  text-align: center;
-  text-align: center;
-}
-.subtitulosangue{
-  text-align: center;
-  margin: 2px 2px;
-}
-.sangue{
-  margin: 5vw;
-}
 *,
 *::before,
 *::after {
@@ -140,7 +92,7 @@
 }
 
 body {
-  margin: 14vh 0;
+  margin: 0;
   font-family: var(--bs-body-font-family);
   font-size: var(--bs-body-font-size);
   font-weight: var(--bs-body-font-weight);
@@ -171,14 +123,6 @@ h6, .h6, h5, .h5, h4, .h4, h3, .h3, h2, .h2, h1, .h1 {
 h1, .h1 {
   font-size: calc(1.375rem + 1.5vw);
 }
-
-
-@media screen and (min-width: 1200px) {
-  .login{
-    margin-top: 150px;
-  }
-}
-
 @media (min-width: 1200px) {
   h1, .h1 {
     font-size: 2.5rem;
