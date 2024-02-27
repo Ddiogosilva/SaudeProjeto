@@ -32,6 +32,10 @@ class webController extends Controller
         return view('Duvidas');
     }
 
+    public function showFormDHstorico(){
+        return view('Historico');
+    }
+
 
     public function enviaContato(){
     $nome = $_POST['nome'];

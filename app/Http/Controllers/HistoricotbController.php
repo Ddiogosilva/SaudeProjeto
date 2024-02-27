@@ -23,19 +23,19 @@ class HistoricotbController extends Controller
         ]);
 
         historicotb::create($historico);
-        return redirect::route('Home');
+        return redirect::route('index');
     }
 
 
     public function showGerenciador(Request $request){
-       $dadoshistorico= historicotb::query();
-       $dadoshistorico->when($request->nome,function($query,$nome){
+       $dadoshistorico= historicotbs::query();
+       $dadoshistorico->when($request->nomeFK,function($query,$nome){
         $query->where('nomeFK', 'like' , '%'.$nome.'%');
        });
 
        $dadoshistorico = $dadoshistorico->get();
 
-       return view('Historico', ['historicotb' => $dadoshistorico]);
+       return view('Historico', ['historicotbs' => $dadoshistorico]);
     }
 
 
@@ -62,6 +62,6 @@ class HistoricotbController extends Controller
 
 
     public function show(historico $nome){
-        return view('historicotodos', ['historicotb'=> $id]);
+        return view('historicotodos', ['historicotb'=> $nome]);
     }
 }

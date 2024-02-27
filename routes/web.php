@@ -44,8 +44,8 @@ Route::post('/historicoadd',[HistoricotbController::class,'storeHistorico'])->na
  
 Route::delete('/delete-historico/{id}',[HistoricotbController::class,'destroy'])->name('delete-historico');
  
-Route::get('/historico/{id}',[HistoricotbController::class,'show'])->name('alterar-historico');
-Route::put('/historicoBanco/{id}',[HistoricotbController::class,'update'])->name('alterarBanco-hitorico');
+Route::get('/historico/{nomeFK}',[HistoricotbController::class,'show'])->name('alterar-historico');
+Route::put('/historicoBanco/{nomeFK}',[HistoricotbController::class,'update'])->name('alterarBanco-hitorico');
  
  
 // tela em tela
@@ -60,5 +60,8 @@ Route::get('/suporte',[webController::class,'showFormSuporte'])->name('suporte-f
  
 Route::get('/duvidas',[webController::class,'showFormDuvidas'])->name('duvidas-form');
 
+Route::get('/historico',[webController::class,'showFormDHstorico'])->name('historico-form');
+
 Route::post('/contato',[webController::class,'enviaContato'])->name('envia-Contato');
+
 

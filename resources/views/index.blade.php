@@ -30,8 +30,7 @@
                         
                         <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="#contact">Contato</a></li>
                         <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="/duvidas">Dúvidas</a></li>
-                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="/suporte">Suporte</a></li>
-                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="#">Histórico</a></li>
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="/historico">Histórico</a></li>
                 @if (Route::has('login'))
                 <div class="navbar-nav ms-auto">
                     @auth
@@ -114,6 +113,12 @@
             <div class="container">
                 <!-- Contact Section Heading-->
                 <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Contato</h2>
+                <p class="text-center ">_____________________________________________</p>
+                <p class="text-center ">Entre em contato conosco<br>
+            Tem alguma dúvida, sugestão ou reclamação? Queremos ouvir você!<br>
+            Preencha o formulário abaixo ou envie um e-mail para contato@site.com.br. <br>Responderemos o mais rápido possível.<br>
+            Se preferir, ligue para (11) 1234-5678, de segunda a sexta, das 9h às 18h.</p>
+                <
                 <!-- Icon Divider-->
                 <div class="divider-custom">
                     <div class="divider-custom-line"></div>
