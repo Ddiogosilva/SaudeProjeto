@@ -14,11 +14,12 @@ class HistoricotbController extends Controller
 
     public function storeHistorico(Request $request){
         $historico= $request->validate([
-            'nomeFK'=>'string|required',
-            'colesterol_HDL'=>'string|required',
-            'colesterol_LDL'=>'string|required',
-            'glicemia'=>'string|required',
-            'pressao'=>'string|required'
+            'iduser'=>'integer|required',
+            'nome'=>'string|required',
+            'colesterol_HDL'=>'string',
+            'colesterol_LDL'=>'string',
+            'glicemia'=>'string',
+            'pressao'=>'string'
 
         ]);
 
@@ -29,8 +30,8 @@ class HistoricotbController extends Controller
 
     public function showGerenciador(Request $request){
        $dadoshistorico= historicotb::query();
-       $dadoshistorico->when($request->nomeFK,function($query,$nome){
-        $query->where('nomeFK', 'like' , '%'.$nome.'%');
+       $dadoshistorico->when($request->nome,function($query,$nome){
+        $query->where('nome', 'like' , '%'.$nome.'%');
        });
 
        $dadoshistorico = $dadoshistorico->get();
@@ -48,11 +49,12 @@ class HistoricotbController extends Controller
 
     public function update(historico $id, Request $request){
         $historico = $request->validate([
-            'nomeFK'=>'string|required',
-            'colesterol_HDL'=>'string|required',
-            'colesterol_LDL'=>'string|required',
-            'glicemia'=>'string|required',
-            'pressao'=>'string|required'
+            'iduser'=>'integer|required',
+            'nome'=>'string|required',
+            'colesterol_HDL'=>'string',
+            'colesterol_LDL'=>'string',
+            'glicemia'=>'string',
+            'pressao'=>'string'
         ]);
 
         $id->fill($historico);

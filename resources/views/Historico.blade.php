@@ -50,6 +50,7 @@
             </div>
         </nav>
 
+        <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Historico</h2>
 
 
 
@@ -57,8 +58,7 @@
 
 
 
-
-    <div>
+    <div class='' action="{{route('historico-todos')}}">
       <table class="table">
         <thead>
           <tr>
@@ -74,7 +74,7 @@
       @foreach ($historicotbs as $historicoArray)
 
           <tr>
-            <th scope="row">{{ $historicoArray->nomeFK}}</th>
+            <th scope="row">---</th>
             <td>{{ $historicoArray->colesterol_HDL }}</td>
             <td>{{ $historicoArray->colesterol_LDL }}</td>
             <td>{{ $historicoArray->glicemia }}</td>
@@ -86,6 +86,13 @@
         
       </table>
     </div>    
+
+
+
+
+
+
+
 <!-- Footer-->
 <footer class="footer text-center">
             <div class="container">

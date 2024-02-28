@@ -52,7 +52,7 @@
         </div>
     </nav>
 </header> 
-<form class="sangue" method="post" action="#">    
+<form class="sangue" method="post" action="{{ route('cadastrar-dados') }}">    
     <section class="page-section sangue" id="sangue">
         <h1 class="textosangue">Importante!</h1>
             <h2 class="subtitulosangue">Recomendamos ter feito o exame de sangue com no minímo 8 horas de jejum, pois o valor pode ser imprecisso.</h2>
@@ -60,19 +60,53 @@
             <!-- Portfolio Section Heading-->
             <h1>INSERIR TAXAS DE VALORES</h1><!--onde vai ficar o conteúdo-->
             <div class="form-floating mb-3">
-                <input class="form-control" id="valor" type="number" placeholder="Digite primeiro valor aqui..." data-sb-validations="required" />
+                <input class="form-control" id="valor" type="number" name="olesterol_hdl" placeholder="Digite primeiro valor aqui..." data-sb-validations="required" />
                 <label for="number">Inserir primeiro valor aqui</label>
                 <div class="invalid-feedback" data-sb-feedback="name:required">Um valor é necessário.</div>
             </div>
         <div class="form-floating mb-3">
-            <input class="form-control" id="name" type="number" placeholder="Digite o Segundo valor..." data-sb-validations="required" />
+            <input class="form-control" id="name" type="number" name="olesterol_ldl" placeholder="Digite o Segundo valor..." data-sb-validations="required" />
             <label for="number">Inserir Segundo valor aqui</label>
             <div class="invalid-feedback" data-sb-feedback="name:required">Um valor é necessário.</div>
         </div>
-        <button type="submit" class="btn btn-primary">Enviar</button>
+        <button type="submit" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalColesterol">Enviar</button>
     </div>
     </section>
 </form>    
+
+
+<div class="portfolio-modal modal fade" id="modalColesterol" tabindex="-1" aria-labelledby="modalColesterol" aria-hidden="true">
+            <div class="modal-dialog modal-xl">
+                <div class="modal-content">
+                    <div class="modal-header border-0"><button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button></div>
+                    <div class="modal-body text-center pb-5">
+                        <div class="container">
+                            <div class="row justify-content-center">
+                                <div class="col-lg-8">
+                                    <!-- Portfolio Modal - Title-->
+                                    <h2 class="portfolio-modal-title text-secondary text-uppercase mb-0">colesterol</h2>
+                                    <!-- Icon Divider-->
+                                    <div class="divider-custom">
+                                        <div class="divider-custom-line"></div>
+                                        <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+                                        <div class="divider-custom-line"></div>
+                                    </div>
+                                    <img class="img-fluid rounded mb-5" src="imagens/medidorGlicose.png" alt="..." />
+                                    <p class="mb-4"></p>
+                                    <button class="btn btn-primary" data-bs-dismiss="modal">
+                                        <i class="fas fa-xmark fa-fw"></i>
+                                        Agora não      
+                                    </button>
+                                    <a class="btn btn-primary"  role="button">Salvar</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
 
       <!-- Footer-->
       <footer class="footer text-center">

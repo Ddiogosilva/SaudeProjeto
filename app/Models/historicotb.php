@@ -8,5 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class historicotb extends Model
 {
     use HasFactory;
-    protected $fillable = ['nomeFK','colesterol_HDL','colesterol_LDL','glicemia','pressao'];
+    protected $fillable = ['iduser','nome','colesterol_HDL','colesterol_LDL','glicemia','pressao'];
 }

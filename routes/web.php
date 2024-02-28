@@ -36,8 +36,6 @@ require __DIR__.'/auth.php';
 
 route::get('/',[webController::class,'index'])->name('index');
  
-Route::get('/Cadastro',[webController::class,'showFormCadastro'])->name('formulario-cadastro');
- 
 Route::get('/historicotodos',[HistoricotbController::class,'showGerenciador'])->name('historico-todos');
  
 Route::post('/historicoadd',[HistoricotbController::class,'storeHistorico'])->name('cadastrar-dados');
@@ -65,3 +63,16 @@ Route::get('/historico',[webController::class,'showFormDHstorico'])->name('histo
 Route::post('/contato',[webController::class,'enviaContato'])->name('envia-Contato');
 
 
+// rota calculos
+
+route::get('/colesterolCalculo',[webController::class,'calculoColesterol'])->name('calculo-colesterol');
+
+route::get('/pressaoCalculo',[webController::class,'calculoPressao'])->name('calculo-pressao');
+
+route::get('/glicoseCalculo',[webController::class,'calculoGlicose'])->name('calculo-glicose');
+
+Route::post('/calcular-pressao', [webController::class, 'calculoPressao']);
+
+Route::post('/calcular-glicemia', [webController::class, 'calculoGlicose']);
+
+Route::post('/calcular-colesterol', [webController::class, 'calculoColesterol']);
