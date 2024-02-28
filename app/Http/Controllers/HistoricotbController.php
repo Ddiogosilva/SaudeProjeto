@@ -28,7 +28,7 @@ class HistoricotbController extends Controller
 
 
     public function showGerenciador(Request $request){
-       $dadoshistorico= historicotbs::query();
+       $dadoshistorico= historicotb::query();
        $dadoshistorico->when($request->nomeFK,function($query,$nome){
         $query->where('nomeFK', 'like' , '%'.$nome.'%');
        });
@@ -39,8 +39,8 @@ class HistoricotbController extends Controller
     }
 
 
-    public function destroy(historicotb $id){
-        $id->delete();
+    public function destroy(historicotb $NomeFK){
+        $NomeFK->delete();
         return redirect::route('historicotodos');
         
     }
