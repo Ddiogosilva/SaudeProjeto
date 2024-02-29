@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -39,7 +40,7 @@
                         <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded"
                                 href="/suporte">Suporte</a></li>
                         <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded"
-                                href="#">Histórico</a></li>
+                                href="/historico">Histórico</a></li>
                         @if (Route::has('login'))
                             <div class="navbar-nav ms-auto">
                                 @auth
@@ -60,10 +61,10 @@
         </nav>
 </header>
 
-<section class="page-section glicemia" id="glicemia">
-    <div class="container">
+<section class="page-section .page-section-heading" id="glicemia">
+    <div class="container content-center">
         <!-- glicemia Section-->
-        <form class="medirGlicose" method="get">
+       
             <h1>INSERIR TAXA</h1>
             <!--onde vai ficar o conteúdo-->
             <aside>
@@ -71,14 +72,14 @@
             </aside>
             <div class="col-md-3">
                 <label for="inputEmail4" class="form-label">Inserir valor</label>
-                <input class="form-control" id="valor_glicemia" type="number" name="valor_Gli"
+                <input class="form-control" id="valor_glicemia" type="number"
                     data-sb-validations="required" />
                 <div class="invalid-feedback" data-sb-feedback="name:required">um valor é necessário.</div>
 
                 <button onclick="calcularExame()" class="btn btn-primary" data-bs-toggle="modal"
                     data-bs-target="#modalGlicose">Enviar</button>
             </div>
-        </form>
+        
     </div>
 </section>
 
@@ -110,10 +111,12 @@
                             </div>
                             @if (Route::has('login'))
                                 @auth
-                                    <a href="{{ route('cadastrar-dados') }}" class="btn btn-primary">Salvar</a>
+                                <!--<a href="{{ route('historico-todos') }}"  class="btn btn-primary" >Salvar </a>-->
+                                <a href="{{ url('/historico') }}" class="btn btn-primary" onclick="calcularExame()">Salvar</a>
                                 @else
-                                    @if (Route::has('register'))
-                                        <a href="{{ route('cadastrar-dados') }}" class="btn btn-primary">Salvar</a>
+                                @if (Route::has('register'))
+                                
+                                        <a href="{{ route('register') }}" class="btn btn-primary">Salvar</a>
                                     @endif
                                 @endauth
                             @endif
@@ -125,8 +128,12 @@
         </div>
     </div>
 </div>
+  
+
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+
 
 <script>
     function calcularExame() {
@@ -135,9 +142,11 @@
         if (valorGlicemia !== '') {
             const resultado = interpretarResultadoGlicemia(valorGlicemia);
             exibirModal(resultado);
+        }else{
+            return "valor nulo não é permitido";
         }
     }
-
+    
     function interpretarResultadoGlicemia(valorGlicose) {
         if (valorGlicose < 70) {
             return "Hipoglicemia";
@@ -164,17 +173,15 @@
         <div class="row">
             <!-- Footer Location-->
             <div class="col-lg-4 mb-5 mb-lg-0">
-                <h4 class="text-uppercase mb-4">Location</h4>
+                <h4 class="text-uppercase mb-4">Localização</h4>
                 <p class="lead mb-0">
-                    2215 John Daniel Drive
-                    <br />
-                    Clark, MO 65243
+                    
                 </p>
             </div>
 
             <!-- Footer About Text-->
             <div class="col-lg-4">
-                <h4 class="text-uppercase mb-4">About Freelancer</h4>
+                <h4 class="text-uppercase mb-4">Sobre Nós</h4>
                 <p class="lead mb-0">
                     Freelance is a free to use, MIT licensed Bootstrap theme created by
                     <a href="http://startbootstrap.com">Start Bootstrap</a> <!--LINK DENTRO DE UM PARÁGRAFO-->

@@ -31,8 +31,8 @@
                         
                         
                         <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="/duvidas">Dúvidas</a></li>
-                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="/suporte">Suporte</a></li>
-                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="#">Histórico</a></li>
+                       
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="{{ route('historico-todos') }}">Histórico</a></li>
                 @if (Route::has('login'))
                 <div class="navbar-nav ms-auto">
                     @auth
@@ -60,13 +60,13 @@
             <!-- Portfolio Section Heading-->
             <h1>INSERIR TAXAS DE VALORES</h1><!--onde vai ficar o conteúdo-->
             <div class="form-floating mb-3">
-                <input class="form-control" id="valor" type="number" name="olesterol_hdl" placeholder="Digite primeiro valor aqui..." data-sb-validations="required" />
-                <label for="number">Inserir primeiro valor aqui</label>
+                <input class="form-control" id="valor" type="number" name="olesterol_hdl" placeholder="Digite o valor HDL..." data-sb-validations="required" />
+                <label for="number">Digite o valor HDL</label>
                 <div class="invalid-feedback" data-sb-feedback="name:required">Um valor é necessário.</div>
             </div>
         <div class="form-floating mb-3">
-            <input class="form-control" id="name" type="number" name="olesterol_ldl" placeholder="Digite o Segundo valor..." data-sb-validations="required" />
-            <label for="number">Inserir Segundo valor aqui</label>
+            <input class="form-control" id="name" type="number" name="olesterol_ldl" placeholder="Digite o valor LDL..." data-sb-validations="required" />
+            <label for="number">Digite o valor LDL</label>
             <div class="invalid-feedback" data-sb-feedback="name:required">Um valor é necessário.</div>
         </div>
         <button type="submit" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalColesterol">Enviar</button>

@@ -71,6 +71,7 @@
           </tr>
         </thead>
         <tbody>
+            
       @foreach ($historicotbs as $historicoArray)
 
           <tr>
