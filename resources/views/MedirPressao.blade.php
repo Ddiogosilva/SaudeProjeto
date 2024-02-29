@@ -35,6 +35,7 @@
                 @if (Route::has('login'))
                 <div class="navbar-nav ms-auto">
                     @auth
+                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="#">Histórico</a></li> 
                     <li class="nav-item mx-0 mx-lg-1"><a href="{{ url('/dashboard') }}" class="nav-link py-3 px-0 px-lg-3 rounded">minha Conta</a></li>
                     @else
                     <li class="nav-item mx-0 mx-lg-1"><a href="{{ route('login') }}" class="nav-link py-3 px-0 px-lg-3 rounded">Login</a></li>
@@ -45,8 +46,6 @@
                     @endauth
                 </div>
                 @endif
-
-                    </ul><div class=""></div>
                 </div>>
             </div>
         </nav>
