@@ -131,9 +131,7 @@
             <p class="text-center ">_____________________________________________</p>
             <p class="text-center ">Entre em contato conosco<br>
                 Tem alguma dúvida, sugestão ou reclamação? Queremos ouvir você!<br>
-                Preencha o formulário abaixo ou envie um e-mail para contato@site.com.br. <br>Responderemos o mais
-                rápido possível.<br>
-                Se preferir, ligue para (11) 1234-5678, de segunda a sexta, das 9h às 18h.</p>
+                Preencha o formulário abaixo.
 
             <!-- Icon Divider-->
             <div class="divider-custom">
@@ -190,47 +188,41 @@
     </section>
     <!-- Footer-->
     <footer class="footer text-center">
-        <div class="container">
-            <div class="row">
-                <!-- Footer Location-->
-                <div class="col-lg-4 mb-5 mb-lg-0">
-                    <h4 class="text-uppercase mb-4">Senac sbc</h4>
-                    <p class="lead mb-0">
-                        TI16M 2024
-                        <br />
-                        Projeto Saúde
-                    </p>
-                </div>
-                <!-- Footer Social Icons-->
-                <div class="col-lg-4 mb-5 mb-lg-0">
-                    <h4 class="text-uppercase mb-4">Redes sociais</h4>
-                    <a class="btn btn-outline-light btn-social mx-1" href="#!"><i
-                            class="fab fa-fw fa-facebook-f"></i></a>
-                    <a class="btn btn-outline-light btn-social mx-1" href="#!"><i
-                            class="fab fa-fw fa-twitter"></i></a>
-                    <a class="btn btn-outline-light btn-social mx-1" href="#!"><i
-                            class="fab fa-fw fa-linkedin-in"></i></a>
-                    <a class="btn btn-outline-light btn-social mx-1" href="#!"><i
-                            class="fab fa-fw fa-dribbble"></i></a>
-                </div>
-                <!-- Footer About Text-->
-                <div class="col-lg-4">
-                    <h4 class="text-uppercase mb-4">About Freelancer</h4>
-                    <p class="lead mb-0">
-                        Freelance is a free to use, MIT licensed Bootstrap theme created by
-                        <a href="http://startbootstrap.com">Start Bootstrap</a>
-                        .
-                    </p>
+            <div class="container">
+                <div class="row">
+                    <!-- Footer Location-->
+                    <div class="col-lg-4 mb-5 mb-lg-0">
+                        <h4 class="text-uppercase mb-4">Senac sbc</h4>
+                        <p class="lead mb-0">
+                            TI16M 2024
+                            <br />
+                            Projeto Saúde
+                        </p>
+                    </div>
+                    <!-- Footer Social Icons-->
+                    <div class="col-lg-4 mb-5 mb-lg-0">
+                        <h4 class="text-uppercase mb-4">Redes sociais</h4>
+                        <a class="btn btn-outline-light btn-social mx-1" href="#!"><i class="fab fa-fw fa-facebook-f"></i></a>
+                        <a class="btn btn-outline-light btn-social mx-1" href="#!"><i class="fab fa-fw fa-twitter"></i></a>
+                        <a class="btn btn-outline-light btn-social mx-1" href="#!"><i class="fab fa-fw fa-linkedin-in"></i></a>
+                        <a class="btn btn-outline-light btn-social mx-1" href="#!"><i class="fab fa-fw fa-dribbble"></i></a>
+                    </div>
+                    <!-- Footer About Text-->
+                    <div class="col-lg-4">
+                        <h4 class="text-uppercase mb-4"></h4>
+                        <p class="lead mb-0">
+                            Para entender mais sobre o nosso propósito, temos o WordPress como documentação com mais detalhes de autores... 
+                            <a href="http://startbootstrap.com">Saiba mais</a><!--COLOCAR O LINK DO WORDPRESS AQUI-->
+                            .
+                        </p>
+                    </div>
                 </div>
             </div>
+        </footer>
+        <!-- Copyright Section-->
+        <div class="copyright py-4 text-center text-white">
+            <div class="container"><small>Copyright &copy; Medtech 2024</small></div>
         </div>
-    </footer>
-    <!-- Copyright Section-->
-    <div class="copyright py-4 text-center text-white">
-        <div class="container"><small>Copyright &copy; Medtech 2024</small></div>
-    </div>
-
-
     <!-- Portfolio Modals-->
     <!-- Portfolio Modal 1-->
     <div class="portfolio-modal modal fade" id="portfolioModal1" tabindex="-1" aria-labelledby="portfolioModal1"
@@ -323,7 +315,7 @@
                                     <div class="divider-custom-line"></div>
                                 </div>
                                 <!-- Portfolio Modal - Image-->
-                                <img class="img-fluid rounded mb-5" src="#" alt="..." />
+                                <img class="img-fluid rounded mb-5" src="imagens/instrucaoColesterol.gif" alt="..." />
                                 <!-- Portfolio Modal - Text-->
                                 <p class="mb-4"></p>
                                 <button class="btn btn-primary" data-bs-dismiss="modal">

@@ -16,64 +16,69 @@
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="css/styles.css" rel="stylesheet" />
     </head>
-    <header>
     <body id="page-top">
-        <!-- Navigation-->
-        <nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
-            <div class="container">
-                <a class="navbar-brand" href="#page-top">* Controle de pressão</a>
-                <button class="navbar-toggler text-uppercase font-weight-bold bg-primary text-white rounded" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-                    Menu
-                    <i class="fas fa-bars"></i>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarResponsive">
-                    <ul class="navbar-nav ms-auto">
-                        
-                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="/duvidas">Dúvidas</a></li>
-                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="/suporte">Suporte</a></li>
-                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="#">Histórico</a></li>
-                @if (Route::has('login'))
-                <div class="navbar-nav ms-auto">
-                    @auth
-                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="#">Histórico</a></li> 
-                    <li class="nav-item mx-0 mx-lg-1"><a href="{{ url('/dashboard') }}" class="nav-link py-3 px-0 px-lg-3 rounded">minha Conta</a></li>
-                    @else
-                    <li class="nav-item mx-0 mx-lg-1"><a href="{{ route('login') }}" class="nav-link py-3 px-0 px-lg-3 rounded">Login</a></li>
- 
-                        @if (Route::has('register'))
-                        <li class="nav-item mx-0 mx-lg-1"><a href="{{ route('register') }}" class="nav-link py-3 px-0 px-lg-3 rounded">Cadastro</a></li>
-                        @endif
-                    @endauth
-                </div>
-                @endif
-                </div>>
+       <!-- Navigation-->
+    <nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
+        <div class="container">
+            <a class="navbar-brand" href="#page-top">Seja bem vindo(a)</a>
+            <button class="navbar-toggler text-uppercase font-weight-bold bg-primary text-white rounded" type="button"
+                data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive"
+                aria-expanded="false" aria-label="Toggle navigation">
+                Menu
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded"
+                            href="/">Início</a></li>
+                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded"
+                            href="#contact">Contato</a></li>
+                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded"
+                            href="/duvidas">Dúvidas</a></li>
+
+                    @if (Route::has('login'))
+
+                        @auth
+                            <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded"
+                                    href="/historico">Histórico</a></li>
+                            <li class="nav-item mx-0 mx-lg-1"><a href="{{ url('/dashboard') }}"
+                                    class="nav-link py-3 px-0 px-lg-3 rounded">minha Conta</a></li>
+                        @else
+                            <li class="nav-item mx-0 mx-lg-1"><a href="{{ route('login') }}"
+                                    class="nav-link py-3 px-0 px-lg-3 rounded">Login</a></li>
+
+                            @if (Route::has('register'))
+                                <li class="nav-item mx-0 mx-lg-1"><a href="{{ route('register') }}"
+                                        class="nav-link py-3 px-0 px-lg-3 rounded">Cadastro</a></li>
+                            @endif
+                        @endauth
+                    @endif
+                </ul>                    
+
             </div>
-        </nav>
-
-
-
-    </header>
-        <!-- Pressao Section-->
-    <form class="medirGlicose" method="post" action="{{ route('cadastrar-dados') }}">    
-        <section class="page-section pressao" id="pressao">
+    </nav>
+        <!-- Pressao Section--> 
+        <section class="page-section pressao" id="pressao" >
             <div class="container">
                 <!-- Portfolio Section Heading-->
                 <h1>INSERIR TAXAS DE VALORES</h1>
                 <div class="form-floating mb-3">
-                    <input class="form-control" id="valor" type="number" name="pressao_sistolica" placeholder="Digite primeiro valor aqui..." data-sb-validations="required" />
+                    <input class="form-control" id="pressao_sistolica" type="number" name="pressao_sistolica" placeholder="Digite primeiro valor aqui..." data-sb-validations="required" />
                     <label for="number">Inserir primeiro valor aqui</label>
                     <div class="invalid-feedback" data-sb-feedback="name:required">Um valor é necessário.</div>
                 </div>
             <div class="form-floating mb-3">
-                <input class="form-control" id="name" type="number" name="pressao_diastolica" placeholder="Digite o Segundo valor..." data-sb-validations="required" />
+                <input class="form-control" id="pressao_diastolica" type="number" name="pressao_diastolica" placeholder="Digite o Segundo valor..." data-sb-validations="required" />
                 <label for="number">Inserir Segundo valor aqui</label>
                 <div class="invalid-feedback" data-sb-feedback="name:required">Um valor é necessário.</div>
             </div>
-            <button type="submit" class="btn btn-primary"data-bs-toggle="modal" data-bs-target="#modalPressao">Enviar</button>
-        </div>
+                <button onclick="calculoPressao()" class="btn btn-primary"data-bs-toggle="modal" data-bs-target="#modalPressao">Enviar</button>
+            </div>
         </section>
-    </form>    
+      
 
+
+    <!-------------------------- Modal --->
     <div class="portfolio-modal modal fade" id="modalPressao" tabindex="-1" aria-labelledby="modalPressao" aria-hidden="true">
             <div class="modal-dialog modal-xl">
                 <div class="modal-content">
@@ -91,12 +96,20 @@
                                         <div class="divider-custom-line"></div>
                                     </div>
                                     <img class="img-fluid rounded mb-5" src="imagens/medidorGlicose.png" alt="..." />
-                                    <p class="mb-4"></p>
-                                    <button class="btn btn-primary" data-bs-dismiss="modal">
-                                        <i class="fas fa-xmark fa-fw"></i>
-                                        Agora não      
-                                    </button>
-                                    <a class="btn btn-primary" role="button">Salvar</a>
+                                    <p class="mb-4">Resultado do teste</p>
+                                     <div class="modal_resul" id="resulExame">
+
+                                    </div>
+                                    @if (Route::has('login'))
+                                        @auth
+                                            <a href="{{ route('cadastrar-dados') }}" class="btn btn-primary">Salvar</a>
+                                        @else
+                                            @if (Route::has('register'))
+                                                <a href="{{ route('register') }}" class="btn btn-primary">Salvar</a>
+                                            @endif
+                                        @endauth
+                                    @endif
+                                    <a class="btn btn-primary" data-bs-dismiss="modal" role="button"></i>Agora não </a>
                                 </div>
                             </div>
                         </div>
@@ -105,29 +118,74 @@
             </div>
         </div>
 
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
 
 
+<script>
+     function calculoPressao(){
+        
+    
+        const pressaoSistolica = document.getElementById('pressao_sistolica').value;
+        const pressaoDiastolica = document.getElementById('pressao_diastolica').value;
+       
 
-        <!-- Footer-->
-        <footer class="footer text-center">
+        if ((pressaoSistolica !== '') && (pressaoDiastolica  !== '')) {
+            const resultado = classificarPressao(pressaoSistolica , pressaoDiastolica);
+            exibirModal(resultado);
+        }
+
+
+        
+    }
+
+     function classificarPressao(pressaoSistolica, pressaoDiastolica)
+    {
+        if (pressaoSistolica < 90 || pressaoDiastolica < 60) {
+            return 'Baixa';
+        } elseif ((pressaoSistolica >= 140 || pressaoDiastolica >= 90) && (pressaoSistolica < 180 && pressaoDiastolica < 120)) {
+            return 'Alta';
+        } else {
+            return 'Normal';
+        }
+    }
+
+    function exibirModal(resultado) {
+        const modalBody = document.getElementById('resulExame');
+        modalBody.innerHTML = `<p>${resultado}</p>`:
+
+
+    }
+
+</script>
+
+    <!-- Footer-->
+    <footer class="footer text-center">
             <div class="container">
                 <div class="row">
                     <!-- Footer Location-->
                     <div class="col-lg-4 mb-5 mb-lg-0">
-                        <h4 class="text-uppercase mb-4">Location</h4>
+                        <h4 class="text-uppercase mb-4">Senac sbc</h4>
                         <p class="lead mb-0">
-                            2215 John Daniel Drive
+                            TI16M 2024
                             <br />
-                            Clark, MO 65243
+                            Projeto Saúde
                         </p>
                     </div>
-                    
+                    <!-- Footer Social Icons-->
+                    <div class="col-lg-4 mb-5 mb-lg-0">
+                        <h4 class="text-uppercase mb-4">Redes sociais</h4>
+                        <a class="btn btn-outline-light btn-social mx-1" href="#!"><i class="fab fa-fw fa-facebook-f"></i></a>
+                        <a class="btn btn-outline-light btn-social mx-1" href="#!"><i class="fab fa-fw fa-twitter"></i></a>
+                        <a class="btn btn-outline-light btn-social mx-1" href="#!"><i class="fab fa-fw fa-linkedin-in"></i></a>
+                        <a class="btn btn-outline-light btn-social mx-1" href="#!"><i class="fab fa-fw fa-dribbble"></i></a>
+                    </div>
                     <!-- Footer About Text-->
                     <div class="col-lg-4">
-                        <h4 class="text-uppercase mb-4">About Freelancer</h4>
+                        <h4 class="text-uppercase mb-4"></h4>
                         <p class="lead mb-0">
-                            Freelance is a free to use, MIT licensed Bootstrap theme created by
-                            <a href="http://startbootstrap.com">Start Bootstrap</a> <!--LINK DENTRO DE UM PARÁGRAFO-->
+                            Para entender mais sobre o nosso propósito, temos o WordPress como documentação com mais detalhes de autores... 
+                            <a href="http://startbootstrap.com">Saiba mais</a><!--COLOCAR O LINK DO WORDPRESS AQUI-->
                             .
                         </p>
                     </div>
@@ -136,7 +194,7 @@
         </footer>
         <!-- Copyright Section-->
         <div class="copyright py-4 text-center text-white">
-            <div class="container"><small>Copyright &copy; Your Website 2023</small></div>
+            <div class="container"><small>Copyright &copy; Medtech 2024</small></div>
         </div>
         <!-- Bootstrap core JS-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>

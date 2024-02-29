@@ -18,73 +18,68 @@
     <!-- Core theme CSS (includes Bootstrap)-->
     <link href="css/styles_1.css" rel="stylesheet" />
 </head>
-<header>
+        <body id="page-top">
+            <!-- Navigation-->
+            <nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
+                <div class="container">
+                    <a class="navbar-brand" href="#page-top">* Controle da glicose </a>
+                    <button class="navbar-toggler text-uppercase font-weight-bold bg-primary text-white rounded"
+                        type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive"
+                        aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                        Menu
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarResponsive">
+                        <ul class="navbar-nav ms-auto">
+                            <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded"
+                                    href="/">Início</a></li>
+                            <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded"
+                                    href="/duvidas">Dúvidas</a></li>
+                            <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded"
+                                    href="#">Histórico</a></li>
+                            @if (Route::has('login'))
+                                <div class="navbar-nav ms-auto">
+                                    @auth
+                                        <li class="nav-item mx-0 mx-lg-1"><a href="{{ url('/dashboard') }}"
+                                                class="nav-link py-3 px-0 px-lg-3 rounded">minha Conta</a></li>
+                                    @else
+                                        <li class="nav-item mx-0 mx-lg-1"><a href="{{ route('login') }}"
+                                                class="nav-link py-3 px-0 px-lg-3 rounded">Login</a></li>
 
-    <body id="page-top">
-        <!-- Navigation-->
-        <nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
-            <div class="container">
-                <a class="navbar-brand" href="#page-top">* Controle da glicose </a>
-                <button class="navbar-toggler text-uppercase font-weight-bold bg-primary text-white rounded"
-                    type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive"
-                    aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-                    Menu
-                    <i class="fas fa-bars"></i>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarResponsive">
-                    <ul class="navbar-nav ms-auto">
+                                        @if (Route::has('register'))
+                                            <li class="nav-item mx-0 mx-lg-1"><a href="{{ route('register') }}"
+                                                    class="nav-link py-3 px-0 px-lg-3 rounded">Cadastro</a></li>
+                                        @endif
+                                    @endauth
+                                </div>
+                            @endif
+                        </ul>
+                    </div>
+            </nav>
 
-                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded"
-                                href="/duvidas">Dúvidas</a></li>
-                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded"
-                                href="/suporte">Suporte</a></li>
-                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded"
-                                href="#">Histórico</a></li>
-                        @if (Route::has('login'))
-                            <div class="navbar-nav ms-auto">
-                                @auth
-                                    <li class="nav-item mx-0 mx-lg-1"><a href="{{ url('/dashboard') }}"
-                                            class="nav-link py-3 px-0 px-lg-3 rounded">minha Conta</a></li>
-                                @else
-                                    <li class="nav-item mx-0 mx-lg-1"><a href="{{ route('login') }}"
-                                            class="nav-link py-3 px-0 px-lg-3 rounded">Login</a></li>
+    <section class="page-section glicemia" id="glicemia">
+        <div class="container">
+            <!-- glicemia Section-->
+                <h1>INSERIR TAXA</h1>
+                <!--onde vai ficar o conteúdo-->
+                <aside>
+                    <img class="img-fluid rounded mb-5" src="/imagens/medidorGlicose.png" alt="..." />
+                </aside>
+                <div class="col-md-3">
+                    <label for="inputEmail4" class="form-label">Inserir valor</label>
+                    <input class="form-control" id="valor_glicemia" type="number" name="valor_Gli"
+                        data-sb-validations="required" />
+                    <div class="invalid-feedback" data-sb-feedback="name:required">um valor é necessário.</div>
 
-                                    @if (Route::has('register'))
-                                        <li class="nav-item mx-0 mx-lg-1"><a href="{{ route('register') }}"
-                                                class="nav-link py-3 px-0 px-lg-3 rounded">Cadastro</a></li>
-                                    @endif
-                                @endauth
-                            </div>
-                        @endif
+                    <button onclick="calcularExame()" class="btn btn-primary" data-bs-toggle="modal"
+                        data-bs-target="#modalGlicose">Enviar</button>
                 </div>
-        </nav>
-</header>
-
-<section class="page-section glicemia" id="glicemia">
-    <div class="container">
-        <!-- glicemia Section-->
-        <form class="medirGlicose" method="get">
-            <h1>INSERIR TAXA</h1>
-            <!--onde vai ficar o conteúdo-->
-            <aside>
-                <img class="img-fluid rounded mb-5" src="/imagens/medidorGlicose.png" alt="..." />
-            </aside>
-            <div class="col-md-3">
-                <label for="inputEmail4" class="form-label">Inserir valor</label>
-                <input class="form-control" id="valor_glicemia" type="number" name="valor_Gli"
-                    data-sb-validations="required" />
-                <div class="invalid-feedback" data-sb-feedback="name:required">um valor é necessário.</div>
-
-                <button onclick="calcularExame()" class="btn btn-primary" data-bs-toggle="modal"
-                    data-bs-target="#modalGlicose">Enviar</button>
-            </div>
-        </form>
-    </div>
-</section>
+        </div>
+    </section>
 
 
-<!-------------------------- Modal --->
-<div class="portfolio-modal modal fade" id="modalGlicose" tabindex="-1" aria-labelledby="modalGlicose"
+<!------------- Modal RESULTADO --->
+<div class="portfolio-modal modal fade" id="modalGlicose" tabindex="-1" aria-labelledby="modalGlicose" 
     aria-hidden="true">
     <div class="modal-dialog modal-xl">
         <div class="modal-content">
@@ -95,25 +90,24 @@
                     <div class="row justify-content-center">
                         <div class="col-lg-8">
                             <!-- Modal - Title-->
-                            <h2 class="portfolio-modal-title text-secondary text-uppercase mb-0">Glicose</h2>
+                            <h2 class="portfolio-modal-title text-secondary text-uppercase mb-0">Resultado:</h2>
                             <!-- Icon Divider-->
-                            <div class="divider-custom">
-                                <div class="divider-custom-line"></div>
-                                <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
-                                <div class="divider-custom-line"></div>
-                            </div>
-                            <!-- Imagem da Modal -->
-                            <img class="img-fluid rounded mb-5" src="/imagens/medidorGlicose.png" alt="..." />
-                            <p class="mb-4">Resultado do teste</p>
+                            <p></p>
+                            <h2>ATENÇÃO, os resultados não substituí seu acompanhamento com médico.</h2>
+                            
                             <div class="modal_resul" id="resulExame">
+                            <!-- Imagem da Modal -->
+                            
+                            
+                            
 
-                            </div>
+                            </div class="" method= "post" >
                             @if (Route::has('login'))
                                 @auth
                                     <a href="{{ route('cadastrar-dados') }}" class="btn btn-primary">Salvar</a>
                                 @else
                                     @if (Route::has('register'))
-                                        <a href="{{ route('cadastrar-dados') }}" class="btn btn-primary">Salvar</a>
+                                        <a href="{{ route('register') }}" class="btn btn-primary">Salvar</a>
                                     @endif
                                 @endauth
                             @endif
@@ -160,35 +154,41 @@
 
 <!-- Footer-->
 <footer class="footer text-center">
-    <div class="container">
-        <div class="row">
-            <!-- Footer Location-->
-            <div class="col-lg-4 mb-5 mb-lg-0">
-                <h4 class="text-uppercase mb-4">Location</h4>
-                <p class="lead mb-0">
-                    2215 John Daniel Drive
-                    <br />
-                    Clark, MO 65243
-                </p>
+            <div class="container">
+                <div class="row">
+                    <!-- Footer Location-->
+                    <div class="col-lg-4 mb-5 mb-lg-0">
+                        <h4 class="text-uppercase mb-4">Senac sbc</h4>
+                        <p class="lead mb-0">
+                            TI16M 2024
+                            <br />
+                            Projeto Saúde
+                        </p>
+                    </div>
+                    <!-- Footer Social Icons-->
+                    <div class="col-lg-4 mb-5 mb-lg-0">
+                        <h4 class="text-uppercase mb-4">Redes sociais</h4>
+                        <a class="btn btn-outline-light btn-social mx-1" href="#!"><i class="fab fa-fw fa-facebook-f"></i></a>
+                        <a class="btn btn-outline-light btn-social mx-1" href="#!"><i class="fab fa-fw fa-twitter"></i></a>
+                        <a class="btn btn-outline-light btn-social mx-1" href="#!"><i class="fab fa-fw fa-linkedin-in"></i></a>
+                        <a class="btn btn-outline-light btn-social mx-1" href="#!"><i class="fab fa-fw fa-dribbble"></i></a>
+                    </div>
+                    <!-- Footer About Text-->
+                    <div class="col-lg-4">
+                        <h4 class="text-uppercase mb-4"></h4>
+                        <p class="lead mb-0">
+                            Para entender mais sobre o nosso propósito, temos o WordPress como documentação com mais detalhes de autores... 
+                            <a href="http://startbootstrap.com">Saiba mais</a><!--COLOCAR O LINK DO WORDPRESS AQUI-->
+                            .
+                        </p>
+                    </div>
+                </div>
             </div>
-
-            <!-- Footer About Text-->
-            <div class="col-lg-4">
-                <h4 class="text-uppercase mb-4">About Freelancer</h4>
-                <p class="lead mb-0">
-                    Freelance is a free to use, MIT licensed Bootstrap theme created by
-                    <a href="http://startbootstrap.com">Start Bootstrap</a> <!--LINK DENTRO DE UM PARÁGRAFO-->
-                    .
-                </p>
-            </div>
+        </footer>
+        <!-- Copyright Section-->
+        <div class="copyright py-4 text-center text-white">
+            <div class="container"><small>Copyright &copy; Medtech 2024</small></div>
         </div>
-    </div>
-</footer>
-<!-- Copyright Section-->
-<div class="copyright py-4 text-center text-white">
-    <div class="container"><small>Copyright &copy; Your Website 2023</small></div>
-</div>
-
 <!-- Bootstrap core JS-->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 <!-- Core theme JS-->
