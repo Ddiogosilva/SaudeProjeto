@@ -31,8 +31,8 @@
                         
                         <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="/">Início</a></li>
                         <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="/duvidas">Dúvidas</a></li>
-                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="/suporte">Suporte</a></li>
-                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="#">Histórico</a></li>
+  
+              
                 @if (Route::has('login'))
                 <div class="navbar-nav ms-auto">
                     @auth
@@ -101,7 +101,7 @@
                             </div>
                             @if (Route::has('login'))
                                 @auth
-                                    <a href="{{ route('cadastrar-dados') }}" class="btn btn-primary">Salvar</a>
+                                    <a href="{{ route('cadastrar-colesterol') }}" class="btn btn-primary">Salvar</a>
                                 @else
                                     @if (Route::has('register'))
                                         <a href="{{ route('register') }}" class="btn btn-primary">Salvar</a>

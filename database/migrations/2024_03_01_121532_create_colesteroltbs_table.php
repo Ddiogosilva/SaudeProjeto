@@ -11,14 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('historicotbs', function (Blueprint $table) {
+        Schema::create('colesteroltbs', function (Blueprint $table) {
             $table->id();
             $table->integer('iduser');
-            $table->string('nome');
             $table->string('colesterol_HDL');
             $table->string('colesterol_LDL');
-            $table->string('glicemia');
-            $table->string('pressao');
             $table->timestamps();
         });
     }
@@ -28,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('historicotbs');
+        Schema::dropIfExists('colesteroltbs');
     }
 };

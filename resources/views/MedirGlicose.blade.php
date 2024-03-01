@@ -64,7 +64,7 @@
 <section class="page-section glicemia" id="glicemia">
     <div class="container">
         <!-- glicemia Section-->
-        <form class="medirGlicose" method="get">
+        
             <h1>INSERIR TAXA</h1>
             <!--onde vai ficar o conteúdo-->
             <aside>
@@ -79,7 +79,7 @@
                 <button onclick="calcularExame()" class="btn btn-primary" data-bs-toggle="modal"
                     data-bs-target="#modalGlicose">Enviar</button>
             </div>
-        </form>
+       
     </div>
 </section>
 
@@ -110,11 +110,11 @@
                             </div class="" method= "post" >
                             @if (Route::has('login'))
                                 @auth
-                                <!--<a href="{{ route('historico-todos') }}"  class="btn btn-primary" >Salvar </a>-->
-                                <a href="{{ url('/historico') }}" class="btn btn-primary" onclick="calcularExame()">Salvar</a>
+                                
+                                <a action="{{ route('cadastrar-glicose') }}"href=" {{ url('/dashboard') }}" class="btn btn-primary" onclick="calcularExame()">Salvar</a>
                                 @else
                                     @if (Route::has('register'))
-                                        <a href="{{ route('cadastrar-dados') }}" class="btn btn-primary">Salvar</a>
+                                        <a href="{{ route('register') }}" class="btn btn-primary">Salvar</a>
                                     @endif
                                 @endauth
                             @endif
@@ -128,8 +128,6 @@
 </div>
   
 
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
-<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 
 
 
@@ -209,3 +207,6 @@
 </body>
 
 </html>
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>

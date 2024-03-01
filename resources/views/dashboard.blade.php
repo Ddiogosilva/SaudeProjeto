@@ -67,6 +67,99 @@
         </div>
     </div>
 </x-app-layout>
+
+
+<!-- inicia o historico-->
+<h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Historico</h2>
+
+
+
+
+
+<h1>
+Glicose
+</h1>
+
+<div>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Glicose</th>
+       
+      </tr>
+    </thead>
+    <tbody>
+        
+  @foreach ($glicosetb as $glicoseArray)
+
+      <tr>
+        <th scope="row">---</th>
+       
+        <td>{{ $glicoseArray->glicose }}</td>
+        
+      </tr>
+
+     @endforeach
+    </tbody>
+    
+  </table>
+</div>    
+<h1>
+    Pressão Arterial
+</h1>
+<div>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Sistólica</th>
+        <th scope="col">Diastólica</th>
+       
+      </tr>
+    </thead>
+    <tbody>
+        
+  @foreach ($pressaoarterialtb as $pressaoarterialArray)
+
+      <tr>
+        <th scope="row">---</th>
+       
+        <td>{{ $pressaoarterialArray->sistolica }}</td>
+        <td>{{ $pressaoarterialArray->diastolica }}</td>
+      </tr>
+
+     @endforeach
+    </tbody>
+    
+  </table>
+</div>    
+<h1>
+    Colesterol
+</h1>
+<div>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">HDL</th>
+        <th scope="col">LDL</th>
+      </tr>
+    </thead>
+    <tbody>
+        
+  @foreach ($colesteroltb as $colesterolArray)
+
+      <tr>
+        <th scope="row">---</th>
+        <td>{{ $colesterolArray->colesterol_HDL }}</td>
+        <td>{{ $colesterolArray->colesterol_LDL }}</td>
+        
+      </tr>
+
+     @endforeach
+    </tbody>
+    
+  </table>
+</div>    
+
 <!-- Footer-->
 <footer class="footer text-center">
             <div class="container">
