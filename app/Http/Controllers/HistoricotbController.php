@@ -36,7 +36,7 @@ class HistoricotbController extends Controller
 
        $dadoshistorico = $dadoshistorico->get();
 
-       return view('Historico', ['historicotbs' => $dadoshistorico]);
+       return view('Historico', ['historicotb' => $dadoshistorico]);
     }
 
 

@@ -17,44 +17,35 @@
         <link href="css/styles.css" rel="stylesheet" />
     </head>
     <body id="page-top">
-       <!-- Navigation-->
-    <nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
-        <div class="container">
-            <a class="navbar-brand" href="#page-top">Seja bem vindo(a)</a>
-            <button class="navbar-toggler text-uppercase font-weight-bold bg-primary text-white rounded" type="button"
-                data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive"
-                aria-expanded="false" aria-label="Toggle navigation">
-                Menu
-                <i class="fas fa-bars"></i>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarResponsive">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded"
-                            href="/">Início</a></li>
-                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded"
-                            href="#contact">Contato</a></li>
-                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded"
-                            href="/duvidas">Dúvidas</a></li>
-
-                    @if (Route::has('login'))
-
-                        @auth
-                            <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded"
-                                    href="/historico">Histórico</a></li>
-                            <li class="nav-item mx-0 mx-lg-1"><a href="{{ url('/dashboard') }}"
-                                    class="nav-link py-3 px-0 px-lg-3 rounded">minha Conta</a></li>
-                        @else
-                            <li class="nav-item mx-0 mx-lg-1"><a href="{{ route('login') }}"
-                                    class="nav-link py-3 px-0 px-lg-3 rounded">Login</a></li>
-
-                            @if (Route::has('register'))
-                                <li class="nav-item mx-0 mx-lg-1"><a href="{{ route('register') }}"
-                                        class="nav-link py-3 px-0 px-lg-3 rounded">Cadastro</a></li>
-                            @endif
-                        @endauth
-                    @endif
-                </ul>                    
-
+        <!-- Navigation-->
+        <nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
+            <div class="container">
+                <a class="navbar-brand" href="#page-top">* Controle de pressão</a>
+                <button class="navbar-toggler text-uppercase font-weight-bold bg-primary text-white rounded" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                    Menu
+                    <i class="fas fa-bars"></i>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav ms-auto">
+                        
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="/duvidas">Dúvidas</a></li>
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="/suporte">Suporte</a></li>
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="#">Histórico</a></li>
+                @if (Route::has('login'))
+                <div class="navbar-nav ms-auto">
+                    @auth
+                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="#">Histórico</a></li> 
+                    <li class="nav-item mx-0 mx-lg-1"><a href="{{ url('/dashboard') }}" class="nav-link py-3 px-0 px-lg-3 rounded">minha Conta</a></li>
+                    @else
+                    <li class="nav-item mx-0 mx-lg-1"><a href="{{ route('login') }}" class="nav-link py-3 px-0 px-lg-3 rounded">Login</a></li>
+ 
+                        @if (Route::has('register'))
+                        <li class="nav-item mx-0 mx-lg-1"><a href="{{ route('register') }}" class="nav-link py-3 px-0 px-lg-3 rounded">Cadastro</a></li>
+                        @endif
+                    @endauth
+                </div>
+                @endif
+                </div>>
             </div>
     </nav>
         <!-- Pressao Section--> 
