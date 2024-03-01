@@ -35,9 +35,7 @@
                         @if (Route::has('login'))
                         <div class="navbar-nav ms-auto">
                             @auth
-                            <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="{{ url('/historico') }}">Histórico</a></li>
-                    
-             
+
                     @else
                     <li class="nav-item mx-0 mx-lg-1"><a href="{{ route('login') }}" class="nav-link py-3 px-0 px-lg-3 rounded">Login</a></li>
  
@@ -76,7 +74,6 @@
 
 
 
-<h1>
 Glicose
 </h1>
 
@@ -85,25 +82,19 @@ Glicose
     <thead>
       <tr>
         <th scope="col">Glicose</th>
-       
       </tr>
     </thead>
     <tbody>
-        
   @foreach ($glicosetb as $glicoseArray)
-
       <tr>
         <th scope="row">---</th>
-       
         <td>{{ $glicoseArray->glicose }}</td>
-        
       </tr>
-
      @endforeach
     </tbody>
-    
   </table>
 </div>    
+
 <h1>
     Pressão Arterial
 </h1>
@@ -118,8 +109,8 @@ Glicose
     </thead>
     <tbody>
         
-  @foreach ($pressaoarterialtb as $pressaoarterialArray)
-
+ @foreach ($pressaoarterialtb as $pressaoarterialArray)
+    
       <tr>
         <th scope="row">---</th>
        
@@ -131,34 +122,8 @@ Glicose
     </tbody>
     
   </table>
-</div>    
-<h1>
-    Colesterol
-</h1>
-<div>
-  <table class="table">
-    <thead>
-      <tr>
-        <th scope="col">HDL</th>
-        <th scope="col">LDL</th>
-      </tr>
-    </thead>
-    <tbody>
-        
-  @foreach ($colesteroltb as $colesterolArray)
+</div>  
 
-      <tr>
-        <th scope="row">---</th>
-        <td>{{ $colesterolArray->colesterol_HDL }}</td>
-        <td>{{ $colesterolArray->colesterol_LDL }}</td>
-        
-      </tr>
-
-     @endforeach
-    </tbody>
-    
-  </table>
-</div>    
 
 <!-- Footer-->
 <footer class="footer text-center">

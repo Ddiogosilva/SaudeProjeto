@@ -93,7 +93,7 @@
                                     </div>
                                     @if (Route::has('login'))
                                         @auth
-                                            <a href="{{ route('cadastrar-dados') }}" class="btn btn-primary">Salvar</a>
+                                            <a href="{{ route('cadastrar-pressao') }}" class="btn btn-primary">Salvar</a>
                                         @else
                                             @if (Route::has('register'))
                                                 <a href="{{ route('register') }}" class="btn btn-primary">Salvar</a>

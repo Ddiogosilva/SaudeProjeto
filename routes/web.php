@@ -19,13 +19,14 @@ use App\Http\Controllers\webController;
 Route::get('/', function () {
     return view('index');
 });
-Route::get('/dashboard',[HistoricotbController::class,'showPressao'])->middleware(['auth', 'verified'])->name('dashboard');
-Route::get('/dashboard',[HistoricotbController::class,'showColesterol'])->middleware(['auth', 'verified'])->name('dashboard');
+
+//Route::get('/dashboard2',[HistoricotbController::class,'showPressao'])->middleware(['auth', 'verified'])->name('dashboard');
+//Route::get('/dashboard',[HistoricotbController::class,'showColesterol'])->middleware(['auth', 'verified'])->name('dashboard');
 Route::get('/dashboard',[HistoricotbController::class,'showGlicose'])->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::post('/historicoadd',[HistoricotbController::class,'storePressao'])->name('cadastrar-pressao');
-Route::post('/historicoadd',[HistoricotbController::class,'storeColesterol'])->name('cadastrar-colesterol');
-Route::post('/historicoadd',[HistoricotbController::class,'storeGlicose'])->name('cadastrar-glicose');
+Route::post('/historicoadd1',[HistoricotbController::class,'storePressao'])->name('cadastrar-pressao');
+Route::post('/historicoadd2',[HistoricotbController::class,'storeColesterol'])->name('cadastrar-colesterol');
+Route::post('/historicoadd3',[HistoricotbController::class,'storeGlicose'])->name('cadastrar-glicose');
 //Route::get('/dashboard', function () {
 //    return view('dashboard');
 //})->middleware(['auth', 'verified'])->name('dashboard');
