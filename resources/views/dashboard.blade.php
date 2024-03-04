@@ -73,56 +73,46 @@
 
 
 
-
-Glicose
+<h1>
+Exames
 </h1>
 
 <div>
   <table class="table">
-    <thead>
-      <tr>
-        <th scope="col">Glicose</th>
-      </tr>
-    </thead>
-    <tbody>
-  @foreach ($glicosetb as $glicoseArray)
-      <tr>
-        <th scope="row">---</th>
-        <td>{{ $glicoseArray->glicose }}</td>
-      </tr>
-     @endforeach
-    </tbody>
-  </table>
+      <thead>
+        <tr><th scope="col">Nivel de Glicose</th></tr></thead>
+        <tbody>
+            @foreach ($glicosetb as $glicoseArray)
+                <tr>
+                <th scope="row">Glicemia</th>
+                <td>{{ $glicoseArray->glicemia}}</td>
+                </tr>
+            @endforeach
+        </tbody>
+      <thead><tr><th scope="col">Pressão Arterial</th></tr></thead>
+      <tbody>
+     
+        @foreach ($pressaoarterialtb as $pressaoarterialArray)
+            <tr>
+            <th scope="row">Pressão</th>
+            <td>{{ $pressaoarterialArray->sistolica}}</td>
+            <td>{{ $pressaoarterialArray->diastolica}}</td>
+            </tr>
+       @endforeach
+      </tbody>
+      <thead><tr><th scope="col">Colesterol</th></tr></thead>
+      <tbody>
+        @foreach ($colesteroltb as $colesterolArray)
+            <tr>
+            <th scope="row">Colesterol</th>
+            <td>{{ $colesterolArray->colesterol_HDL}}</td>
+            <td>{{ $colesterolArray->colesterol_LDL}}</td>
+            </tr>
+       @endforeach
+      </tbody>
+    </table>
 </div>    
 
-<h1>
-    Pressão Arterial
-</h1>
-<div>
-  <table class="table">
-    <thead>
-      <tr>
-        <th scope="col">Sistólica</th>
-        <th scope="col">Diastólica</th>
-       
-      </tr>
-    </thead>
-    <tbody>
-        
- @foreach ($pressaoarterialtb as $pressaoarterialArray)
-    
-      <tr>
-        <th scope="row">---</th>
-       
-        <td>{{ $pressaoarterialArray->sistolica }}</td>
-        <td>{{ $pressaoarterialArray->diastolica }}</td>
-      </tr>
-
-     @endforeach
-    </tbody>
-    
-  </table>
-</div>  
 
 
 <!-- Footer-->

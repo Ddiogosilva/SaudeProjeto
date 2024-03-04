@@ -50,6 +50,7 @@ class HistoricotbController extends Controller
        $dadospressao->when($request->iduser,function($query,$id){
         $query->where('iduser', 'like' , '%'.$id.'%');
        });
+       
 
        $dadospressao = $dadospressao->get();
 
@@ -70,18 +71,35 @@ class HistoricotbController extends Controller
     public function showGlicose(Request $request){
         $dadosglicose= glicosetb::query();
         $dadosglicose->when($request->iduser,function($query,$id){
-         $query->where('iduser', 'like' , '%'.$id.'%');
+         $query->where('iduser', 'like' , $id);
         });
  
         $dadosglicose = $dadosglicose->get();
 
-        return view('dashboard', ['glicosetb' => $dadosglicose]);
+        $dadoscolesterol= colesteroltb::query();
+        $dadoscolesterol->when($request->iduser,function($query,$id){
+         $query->where('iduser', 'like' , $id);
+        });
+
+        $dadoscolesterol = $dadoscolesterol->get();
+       // dd($dadoscolesterol);
+
+        $dadospressao= pressaoarterialtb::query();
+        $dadospressao->when($request->iduser,function($query,$id){
+         $query->where('iduser', 'like' , $id);
+        });
+        
+ 
+        $dadospressao = $dadospressao->get();
+
+//var_dump($dadosglicose);
+        return view('dashboard',['glicosetb' => $dadosglicose, 'colesteroltb' => $dadoscolesterol,'pressaoarterialtb' => $dadospressao]);
     }
 
 
     
     
-    
+    /*
     public function destroy(historicotb $NomeFK){
         $NomeFK->delete();
         return redirect::route('historicotodos');
@@ -108,4 +126,5 @@ class HistoricotbController extends Controller
     public function show(historico $nome){
         return view('historicotodos', ['historicotb'=> $nome]);
     }
+*/
 }
