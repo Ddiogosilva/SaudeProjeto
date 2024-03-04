@@ -106,18 +106,21 @@
                             
                             
 
-                            </div class="" method= "post" >
-                            @if (Route::has('login'))
-                                @auth
+                            </div class="" method= "post" action='{{ route('cadastrar-glicose') }}'>
+                                @if (Route::has('login'))
+                                    @auth
+                                 
+                                    <button type="submit" class="btn btn-primary" onclick="calcularExame()">Salvar</button>
+                                    @else
+                                        @if (Route::has('register'))
+                                            <a href="{{ route('register') }}" class="btn btn-primary">Salvar</a>
+                                        @endif
+                                    @endauth
+                                @endif
                                 
-                                <a href="{{ route('cadastrar-glicose') }}" class="btn btn-primary" onclick="calcularExame()">Salvar</a>
-                                @else
-                                    @if (Route::has('register'))
-                                        <a href="{{ route('register') }}" class="btn btn-primary">Salvar</a>
-                                    @endif
-                                @endauth
-                            @endif
-                            <a class="btn btn-primary" data-bs-dismiss="modal" role="button"></i>Agora não </a>
+                                <a class="btn btn-primary" data-bs-dismiss="modal" role="button"></i>Agora não </a>
+                            </div>
+                        
                         </div>
                     </div>
                 </div>

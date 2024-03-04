@@ -45,30 +45,8 @@ class HistoricotbController extends Controller
     
 
     //-----------------------------------Show historico 
-    public function showPressao(Request $request){
-       $dadospressao= pressaoarterialtb::query();
-       $dadospressao->when($request->iduser,function($query,$id){
-        $query->where('iduser', 'like' , '%'.$id.'%');
-       });
-       
-
-       $dadospressao = $dadospressao->get();
-
-       return view('dashboard', ['pressaoarterialtb' => $dadospressao]);
-    }
-
-    public function showColesterol(Request $request){
-        $dadoscolesterol= colesteroltb::query();
-        $dadoscolesterol->when($request->iduser,function($query,$id){
-         $query->where('iduser', 'like' , '%'.$id.'%');
-        });
- 
-        $dadoscolesterol = $dadoscolesterol->get();
-
-        return view('dashboard', ['colesteroltb' => $dadoscolesterol]);
-     }
-
-    public function showGlicose(Request $request){
+    
+    public function showExames(Request $request){
         $dadosglicose= glicosetb::query();
         $dadosglicose->when($request->iduser,function($query,$id){
          $query->where('iduser', 'like' , $id);
@@ -92,7 +70,6 @@ class HistoricotbController extends Controller
  
         $dadospressao = $dadospressao->get();
 
-//var_dump($dadosglicose);
         return view('dashboard',['glicosetb' => $dadosglicose, 'colesteroltb' => $dadoscolesterol,'pressaoarterialtb' => $dadospressao]);
     }
 
