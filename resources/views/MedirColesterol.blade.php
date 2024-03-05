@@ -94,8 +94,7 @@
                                 <div class="divider-custom-line"></div>
                             </div>
                             <!-- Imagem da Modal -->
-                            <img class="img-fluid rounded mb-5" src="/" alt="..." />
-                            <p class="mb-4">Resultado do teste</p>
+                           <form method= "post" action="{{route('cadastrar-colesterol') }}" >
                             <div class="modal_resul" id="resulExame">
 
                             </div>
@@ -109,6 +108,8 @@
                                 @endauth
                             @endif
                             <a class="btn btn-primary" data-bs-dismiss="modal" role="button"></i>Agora não </a>
+
+                            </form>
                         </div>
                     </div>
                 </div>

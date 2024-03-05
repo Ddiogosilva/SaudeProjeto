@@ -39,8 +39,7 @@
                                 href="/duvidas">Dúvidas</a></li>
                         <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded"
                                 href="/suporte">Suporte</a></li>
-                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded"
-                                href="#">Histórico</a></li>
+                       
                         @if (Route::has('login'))
                             <div class="navbar-nav ms-auto">
                                 @auth
@@ -64,7 +63,8 @@
 <section class="page-section glicemia" id="glicemia">
     <div class="container">
         <!-- glicemia Section-->
-        
+        <form method="post" action="{{route('cadastrar-glicose') }}" >
+            @csrf
             <h1>INSERIR TAXA</h1>
             <!--onde vai ficar o conteúdo-->
             <aside>
@@ -72,14 +72,14 @@
             </aside>
             <div class="col-md-3">
                 <label for="inputEmail4" class="form-label">Inserir valor</label>
-                <input class="form-control" id="valor_glicemia" type="number" name="valor_Gli"
+                <input class="form-control" id="valor_glicemia" type="number" name="glicose"
                     data-sb-validations="required" />
-                <div class="invalid-feedback" data-sb-feedback="name:required">um valor é necessário.</div>
 
-                <button onclick="calcularExame()" class="btn btn-primary" data-bs-toggle="modal"
+                <button type="submit" onclick="calcularExame()" class="btn btn-primary" data-bs-toggle="modal"
                     data-bs-target="#modalGlicose">Enviar</button>
+                    
             </div>
-       
+        </form>
     </div>
 </section>
 
@@ -99,26 +99,15 @@
                             <h2 class="portfolio-modal-title text-secondary text-uppercase mb-0">Resultado:</h2>
                             <!-- Icon Divider-->
                             <p></p>
-                            <h2>ATENÇÃO, os resultados não substituí seu acompanhamento com médico.</h2>
-                            
-                            <div class="modal_resul" id="resulExame">
-                            <!-- Imagem da Modal -->
-                            
-                            
-                            
+                            <h2>ATENÇÃO, os resultados não substituí seu acompanhamento com médico.</h2>                   
+                           
+                            <div  class="modal_resul" id="resulExame"></div>
 
-                            </div class="" method= "post" >
-                            @if (Route::has('login'))
-                                @auth
-                                
-                                <a action="{{ route('cadastrar-glicose') }}"href=" {{ url('/dashboard') }}" class="btn btn-primary" onclick="calcularExame()">Salvar</a>
-                                @else
-                                    @if (Route::has('register'))
-                                        <a href="{{ route('register') }}" class="btn btn-primary">Salvar</a>
-                                    @endif
-                                @endauth
-                            @endif
-                            <a class="btn btn-primary" data-bs-dismiss="modal" role="button"></i>Agora não </a>
+                            <a href="{{ url('/dashboard') }}" class="btn btn-primary" role="button">ir para historico</a>
+                            
+                            <a class="btn btn-primary" data-bs-dismiss="modal" role="button"></i>Sair </a>
+
+                          
                         </div>
                     </div>
                 </div>
@@ -197,7 +186,7 @@
 <!-- Bootstrap core JS-->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 <!-- Core theme JS-->
-<script src="js/scripts.js"></script>
+
 
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
 <!-- * *                               SB Forms JS                               * *-->

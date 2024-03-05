@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('glicosetbs', function (Blueprint $table) {
             $table->id();
             $table->integer('iduser');
-            $table->string('glicemia');
+            $table->string('glicose');
             $table->timestamps();
         });
     }

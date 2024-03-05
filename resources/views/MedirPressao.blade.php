@@ -30,11 +30,11 @@
                         
                         <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="/duvidas">Dúvidas</a></li>
                         <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="/suporte">Suporte</a></li>
-                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="#">Histórico</a></li>
+                        
                 @if (Route::has('login'))
                 <div class="navbar-nav ms-auto">
                     @auth
-                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="#">Histórico</a></li> 
+                   
                     <li class="nav-item mx-0 mx-lg-1"><a href="{{ url('/dashboard') }}" class="nav-link py-3 px-0 px-lg-3 rounded">minha Conta</a></li>
                     @else
                     <li class="nav-item mx-0 mx-lg-1"><a href="{{ route('login') }}" class="nav-link py-3 px-0 px-lg-3 rounded">Login</a></li>
@@ -86,14 +86,14 @@
                                         <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
                                         <div class="divider-custom-line"></div>
                                     </div>
-                                    <img class="img-fluid rounded mb-5" src="imagens/medidorGlicose.png" alt="..." />
-                                    <p class="mb-4">Resultado do teste</p>
+                                
+                                    <form method= "post" action="{{route('cadastrar-pressao') }}">
                                      <div class="modal_resul" id="resulExame">
 
                                     </div>
                                     @if (Route::has('login'))
                                         @auth
-                                            <a href="{{ route('cadastrar-pressao') }}" class="btn btn-primary">Salvar</a>
+                                        <button class="btn btn-primary" role="button" type="submit" >Salvar</button>
                                         @else
                                             @if (Route::has('register'))
                                                 <a href="{{ route('register') }}" class="btn btn-primary">Salvar</a>
@@ -101,6 +101,8 @@
                                         @endauth
                                     @endif
                                     <a class="btn btn-primary" data-bs-dismiss="modal" role="button"></i>Agora não </a>
+                                    
+                                    </form>
                                 </div>
                             </div>
                         </div>
