@@ -34,9 +34,8 @@
                         
                 @if (Route::has('login'))
                 <div class="navbar-nav ms-auto">
-                    @auth-
-                  
-                    <li class="nav-item mx-0 mx-lg-1"><a href="{{ url('/dashboard') }}" class="nav-link py-3 px-0 px-lg-3 rounded">minha Conta</a></li>
+                    @auth
+                    <li class="nav-item mx-0 mx-lg-1"><a href="{{ url('../dashboard') }}" class="nav-link py-3 px-0 px-lg-3 rounded">minha Conta</a></li>
                     @else
                     <li class="nav-item mx-0 mx-lg-1"><a href="{{ route('login') }}" class="nav-link py-3 px-0 px-lg-3 rounded">Login</a></li>
  
@@ -101,7 +100,7 @@
                             <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
                                 <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
                             </div>
-                            <h2>Glicose</h2>
+                            <h2>Medir Colesterol</h2>
                         <a href="#"><img class="img-fluid" src="imagens/sangue.jpg" alt="..." /></a>
                     </div>
                 </div>

@@ -45,44 +45,67 @@ class HistoricotbController extends Controller
     
 
     //-----------------------------------Show historico 
-    public function showExames(Request $request){
-        $dadosglicose= glicosetb::query();
-        $dadosglicose->when($request->iduser,function($query,$id){
-         $query->where('iduser', 'like' , $id);
-        });
- 
-        $dadosglicose = $dadosglicose->get();
+    public function showPressao(Request $request){
+       $dadospressao= pressaoarterialtb::query();
+       $dadospressao->when($request->iduser,function($query,$id){
+        $query->where('iduser', 'like' , '%'.$id.'%');
+       });
 
+       $dadospressao = $dadospressao->get();
+
+       return view('dashboard', ['pressaoarterialtb' => $dadospressao]);
+    }
+
+    public function showColesterol(Request $request){
         $dadoscolesterol= colesteroltb::query();
         $dadoscolesterol->when($request->iduser,function($query,$id){
          $query->where('iduser', 'like' , $id);
         });
+ 
         $dadoscolesterol = $dadoscolesterol->get();
 
-        $dadospressao= pressaoarterialtb::query();
-        $dadospressao->when($request->iduser,function($query,$id){
-         $query->where('iduser', 'like' , $id);
-        });
-        
-        $dadospressao = $dadospressao->get();
+        return view('dashboard', ['colesteroltb' => $dadoscolesterol]);
+     }
 
-//var_dump($dadosglicose);
-        return view('dashboard',['glicosetb' => $dadosglicose, 'colesteroltb' => $dadoscolesterol,'pressaoarterialtb' => $dadospressao]);
+    public function showGlicose(Request $request){
+        $dadosglicose= glicosetb::query();
+        $dadosglicose->when($request->iduser,function($query,$id){
+         $query->where('iduser', 'like' , '%'.$id.'%');
+        });
+ 
+        $dadosglicose = $dadosglicose->get();
+
+        return view('dashboard', ['glicosetb' => $dadosglicose]);
     }
 
-    
-    
-    
-
-
-
-
-
-
-
-
-
-
 
     
-} 
+    
+    
+    public function destroy(historicotb $NomeFK){
+        $NomeFK->delete();
+        return redirect::route('historicotodos');
+        
+    }
+
+
+    public function update(historico $id, Request $request){
+        $historico = $request->validate([
+            'iduser'=>'integer|required',
+            'nome'=>'string|required',
+            'colesterol_HDL'=>'string',
+            'colesterol_LDL'=>'string',
+            'glicemia'=>'string',
+            'pressao'=>'string'
+        ]);
+
+        $id->fill($historico);
+        $id->save();
+        return redirect::route('historicotodos');
+    }
+
+
+    public function show(historico $nome){
+        return view('historicotodos', ['historicotb'=> $nome]);
+    }
+}

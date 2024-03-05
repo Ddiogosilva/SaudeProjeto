@@ -25,7 +25,7 @@
         <!-- Navigation-->
         <nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
             <div class="container">
-                <a class="navbar-brand" href="#page-top">* Controle da glicose </a>
+                <a class="navbar-brand" href="{{ url('../index.php') }}"> Controle da glicose </a>
                 <button class="navbar-toggler text-uppercase font-weight-bold bg-primary text-white rounded"
                     type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive"
                     aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
@@ -39,7 +39,8 @@
                                 href="/duvidas">Dúvidas</a></li>
                         <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded"
                                 href="/suporte">Suporte</a></li>
-                       
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded"
+                                href="#">Histórico</a></li>
                         @if (Route::has('login'))
                             <div class="navbar-nav ms-auto">
                                 @auth
@@ -99,15 +100,26 @@
                             <h2 class="portfolio-modal-title text-secondary text-uppercase mb-0">Resultado:</h2>
                             <!-- Icon Divider-->
                             <p></p>
-                            <h2>ATENÇÃO, os resultados não substituí seu acompanhamento com médico.</h2>                   
-                           
-                            <div  class="modal_resul" id="resulExame"></div>
-
-                            <a href="{{ url('/dashboard') }}" class="btn btn-primary" role="button">ir para historico</a>
+                            <h2>ATENÇÃO, os resultados não substituí seu acompanhamento com médico.</h2>
                             
-                            <a class="btn btn-primary" data-bs-dismiss="modal" role="button"></i>Sair </a>
+                            <div class="modal_resul" id="resulExame">
+                            <!-- Imagem da Modal -->
+                            
+                            
+                            
 
-                          
+                            </div class="" method= "post" >
+                            @if (Route::has('login'))
+                                @auth
+                                
+                                <a action="{{ route('cadastrar-glicose') }}"href=" {{ url('/dashboard') }}" class="btn btn-primary" onclick="calcularExame()">Salvar</a>
+                                @else
+                                    @if (Route::has('register'))
+                                        <a href="{{ route('register') }}" class="btn btn-primary">Salvar</a>
+                                    @endif
+                                @endauth
+                            @endif
+                            <a class="btn btn-primary" data-bs-dismiss="modal" role="button"></i>Agora não </a>
                         </div>
                     </div>
                 </div>
