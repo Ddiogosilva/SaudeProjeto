@@ -74,8 +74,10 @@
                 <input class="form-control" id="valor_glicemia" type="number" name="glicose"
                     data-sb-validations="required" />
 
-                <button type="submit" onclick="calcularExame()" class="btn btn-primary" data-bs-toggle="modal"
-                    data-bs-target="#modalGlicose">Enviar</button>
+                <button type="submit"class="btn btn-primary">Enviar</button>
+
+                <button onclick="calcularExame()" class="btn btn-primary" data-bs-toggle="modal"
+                    data-bs-target="#modalGlicose"></button>    
                     
             </div>
         </form>

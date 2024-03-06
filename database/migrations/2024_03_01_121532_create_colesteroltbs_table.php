@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('colesteroltbs', function (Blueprint $table) {
             $table->id();
             $table->integer('iduser');
-            $table->string('colesterol_HDL');
-            $table->string('colesterol_LDL');
+            $table->integer('colesterol_HDL');
+            $table->integer('colesterol_LDL');
             $table->timestamps();
         });
     }

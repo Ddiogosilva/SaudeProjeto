@@ -72,21 +72,23 @@
                 <!-- Portfolio Section Heading-->
                 <h1>INSERIR TAXAS DE VALORES</h1><!--onde vai ficar o conteúdo-->
                 <div class="form-floating mb-3">
-                    <input class="form-control" id="valor" type="number" name="colesterol_HDL"
+                    <input class="form-control" id="HDL" type="number" name="HDL"
                         placeholder="Digite primeiro valor aqui..." data-sb-validations="required" />
-                    <label for="number">Inserir primeiro valor aqui</label>
+                    <label for="HDL">Inserir primeiro valor aqui</label>
                     <div class="invalid-feedback" data-sb-feedback="name:required">Um valor é necessário.</div>
                 </div>
                 <div class="form-floating mb-3">
-                    <input class="form-control" id="name" type="number" name="colesterol_LDLL"
+                    <input class="form-control" id="LDL" type="number" name="LDL"
                         placeholder="Digite o Segundo valor..." data-sb-validations="required" />
-                    <label for="number">Inserir Segundo valor aqui</label>
+                    <label for="LDL">Inserir Segundo valor aqui</label>
                     <div class="invalid-feedback" data-sb-feedback="name:required">Um valor é necessário.</div>
                 </div>
-
+                <button type="button" onclick="calcularColesterol()" class="btn btn-primary" data-bs-toggle="modal"
+                             data-bs-target="#modalColesterol">resultado</button>
                 @if (Route::has('login'))
                     @auth
                         <button type="submit" class="btn btn-primary">Salvar</button>
+                         
                     @else
                         @if (Route::has('register'))
                             <a href="{{ route('register') }}" class="btn btn-primary">Salvar</a>
@@ -100,8 +102,7 @@
 
 
     <!---------- Modal RESULTADO --->
-    <div class="portfolio-modal modal fade" id="modalColesterol" tabindex="-1" aria-labelledby="modalColesterol"
-        aria-hidden="true">
+    <div class="portfolio-modal modal fade" id="modalColesterol" tabindex="-1" aria-labelledby="modalColesterol" aria-hidden="true">
         <div class="modal-dialog modal-xl">
             <div class="modal-content">
                 <div class="modal-header border-0"><button class="btn-close" type="button" data-bs-dismiss="modal"
@@ -118,25 +119,11 @@
                                     <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
                                     <div class="divider-custom-line"></div>
                                 </div>
-                                <!-- Imagem da Modal -->
-                                <form method= "post" action="{{ route('cadastrar-colesterol') }}">
-                                    <div class="modal_resul" id="resulExame">
 
-                                    </div>
-                                    @if (Route::has('login'))
-                                        @auth
-                                            <a href="{{ route('cadastrar-colesterol') }}"
-                                                class="btn btn-primary">Salvar</a>
-                                        @else
-                                            @if (Route::has('register'))
-                                                <a href="{{ route('register') }}" class="btn btn-primary">Salvar</a>
-                                            @endif
-                                        @endauth
-                                    @endif
-                                    <a class="btn btn-primary" data-bs-dismiss="modal" role="button"></i>Agora
-                                        não </a>
+                                <div class="modal_resul" id="resultado"></div>
 
-                                </form>
+                            
+                                <a class="btn btn-primary" data-bs-dismiss="modal" role="button"></i>Agora não </a>
                             </div>
                         </div>
                     </div>
@@ -144,59 +131,52 @@
             </div>
         </div>
     </div>
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    
 
 
     <script>
-        function calculoColesterol(request) {
-            
+        function calcularColesterol() {
+            var hdlInput = document.getElementById('HDL');
+            var ldlInput = document.getElementById('LDL');
+            var hdl = parseFloat(hdlInput.value);
+            var ldl = parseFloat(ldlInput.value);
 
-            colesterolHDL = request->input('colesterol_hdl');
-            colesterolLDL = request->input('colesterol_ldl');
+            var resultadoDiv = document.getElementById('resultado');
 
-            classificacaoHDL = this->classificarColesterolHDL(colesterolHDL);
-            classificacaoLDL = this->classificarColesterolLDL(colesterolLDL);
-
-            resultado = classificacaoHDL, classificacaoLDL;
-
-        }
-
-        function classificarColesterolHDL(colesterolHDL) {
-            if (colesterolHDL < 40) {
-                return 'Baixo';
+            if (isNaN(hdl) || isNaN(ldl)) {
+                resultadoDiv.innerHTML = "Por favor, insira valores numéricos para HDL e LDL.";
+                return;
             }
-            elseif(colesterolHDL >= 40 && colesterolHDL <= 60) {
-                return 'Normal';
+
+            var mensagem = "Seu colesterol HDL é " + hdl + " mg/dL e seu colesterol LDL é " + ldl + " mg/dL.";
+
+            if (hdl < 40) {
+                mensagem += " O nível de HDL está abaixo do ideal.";
+            } else if (hdl > 60) {
+                mensagem += " O nível de HDL está acima do ideal.";
             } else {
-                return 'Alto';
+                mensagem += " O nível de HDL está dentro da faixa ideal.";
             }
-        }
 
-        function classificarColesterolLDL($colesterolLDL) {
-            if (colesterolLDL < 100) {
-                return 'Ótimo';
-            }
-            elseif(colesterolLDL >= 100 && colesterolLDL <= 129) {
-                return 'Normal';
-            }
-            elseif(colesterolLDL >= 130 && colesterolLDL <= 159) {
-                return 'Limítrofe';
-            }
-            elseif(colesterolLDL >= 160 && colesterolLDL <= 189) {
-                return 'Alto';
+            if (ldl < 100) {
+                mensagem += " O nível de LDL está ótimo.";
+            } else if (ldl >= 100 && ldl < 130) {
+                mensagem += " O nível de LDL está próximo do ideal.";
+            } else if (ldl >= 130 && ldl < 160) {
+                mensagem += " O nível de LDL está um pouco alto.";
+            } else if (ldl >= 160 && ldl < 190) {
+                mensagem += " O nível de LDL está alto.";
             } else {
-                return 'Muito alto';
+                mensagem += " O nível de LDL está muito alto.";
             }
+
+            resultadoDiv.innerHTML = mensagem;
         }
 
-        function resultado(resultado) {
-            const modalBody = document.getElementById('resulExame');
-            modalBody.innerHTML = `<p>${resultado}</p>`:
-
-
-        }
     </script>
+
+
+
     <!-- Footer-->
     <footer class="footer text-center">
         <div class="container">
@@ -248,6 +228,8 @@
     <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
     <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
     <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
 
 </body>
 

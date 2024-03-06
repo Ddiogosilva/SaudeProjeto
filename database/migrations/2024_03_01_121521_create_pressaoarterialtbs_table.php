@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('pressaoarterialtbs', function (Blueprint $table) {
             $table->id();
             $table->integer('iduser');
-            $table->string('sistolica');
-            $table->string('diastolica');
+            $table->integer('sistolica');
+            $table->integer('diastolica');
             $table->timestamps();
         });
     }

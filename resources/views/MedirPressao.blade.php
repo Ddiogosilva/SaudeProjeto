@@ -51,19 +51,30 @@
         <!-- Pressao Section--> 
         <section class="page-section pressao" id="pressao" >
             <div class="container">
-                <!-- Portfolio Section Heading-->
-                <h1>INSERIR TAXAS DE VALORES</h1>
+                    <!-- Portfolio Section Heading-->
+                    <h1>INSERIR TAXAS DE VALORES</h1>
+                    <div class="form-floating mb-3">
+                        <input class="form-control" id="sistolica" type="number" name="sistolica" placeholder="Digite primeiro valor aqui..." data-sb-validations="required" />
+                        <label for="sistolica">Inserir primeiro valor aqui</label>
+                        <div class="invalid-feedback" data-sb-feedback="name:required">Um valor é necessário.</div>
+                    </div>
                 <div class="form-floating mb-3">
-                    <input class="form-control" id="pressao_sistolica" type="number" name="pressao_sistolica" placeholder="Digite primeiro valor aqui..." data-sb-validations="required" />
-                    <label for="number">Inserir primeiro valor aqui</label>
+                    <input class="form-control" id="diastolica" type="number" name="diastolica" placeholder="Digite o Segundo valor..." data-sb-validations="required" />
+                    <label for="diastolica">Inserir Segundo valor aqui</label>
                     <div class="invalid-feedback" data-sb-feedback="name:required">Um valor é necessário.</div>
                 </div>
-            <div class="form-floating mb-3">
-                <input class="form-control" id="pressao_diastolica" type="number" name="pressao_diastolica" placeholder="Digite o Segundo valor..." data-sb-validations="required" />
-                <label for="number">Inserir Segundo valor aqui</label>
-                <div class="invalid-feedback" data-sb-feedback="name:required">Um valor é necessário.</div>
-            </div>
-                <button onclick="calculoPressao()" class="btn btn-primary"data-bs-toggle="modal" data-bs-target="#modalPressao">Enviar</button>
+                <button onclick="calcularPressao()" class="btn btn-primary"data-bs-toggle="modal" data-bs-target="#modalPressao">Enviar</button>
+                @if (Route::has('login'))
+                    @auth
+                        <button type="submit" class="btn btn-primary">Salvar</button>
+                        
+                    @else
+                        @if (Route::has('register'))
+                            <a href="{{ route('register') }}" class="btn btn-primary">Salvar</a>
+                        @endif
+                    @endauth
+                @endif
+                
             </div>
         </section>
       
@@ -86,23 +97,12 @@
                                         <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
                                         <div class="divider-custom-line"></div>
                                     </div>
-                                
-                                    <form method= "post" action="{{route('cadastrar-pressao') }}">
-                                     <div class="modal_resul" id="resulExame">
 
-                                    </div>
-                                    @if (Route::has('login'))
-                                        @auth
-                                        <button class="btn btn-primary" role="button" type="submit" >Salvar</button>
-                                        @else
-                                            @if (Route::has('register'))
-                                                <a href="{{ route('register') }}" class="btn btn-primary">Salvar</a>
-                                            @endif
-                                        @endauth
-                                    @endif
+                                    <div class="modal_resul" id="resultado"></div>
+                                    
                                     <a class="btn btn-primary" data-bs-dismiss="modal" role="button"></i>Agora não </a>
                                     
-                                    </form>
+                                  
                                 </div>
                             </div>
                         </div>
@@ -116,41 +116,38 @@
 
 
 <script>
-     function calculoPressao(){
-        
-    
-        const pressaoSistolica = document.getElementById('pressao_sistolica').value;
-        const pressaoDiastolica = document.getElementById('pressao_diastolica').value;
-       
+        function calcularPressao() {
+            var sistolicaInput = document.getElementById('sistolica');
+            var diastolicaInput = document.getElementById('diastolica');
+            var sistolica = parseFloat(sistolicaInput.value);
+            var diastolica = parseFloat(diastolicaInput.value);
 
-        if ((pressaoSistolica !== '') && (pressaoDiastolica  !== '')) {
-            const resultado = classificarPressao(pressaoSistolica , pressaoDiastolica);
-            exibirModal(resultado);
+            var resultadoDiv = document.getElementById('resultado');
+
+            if (isNaN(sistolica) || isNaN(diastolica)) {
+                resultadoDiv.innerHTML = "Por favor, insira valores numéricos para a pressão sistólica e diastólica.";
+                return;
+            }
+
+            var mensagem = "Sua pressão arterial é " + sistolica + "/" + diastolica + " mmHg.";
+
+            if (sistolica < 90 || diastolica < 60) {
+                mensagem += " Você está com hipotensão.";
+            } else if ((sistolica >= 90 && sistolica < 120) && (diastolica >= 60 && diastolica < 80)) {
+                mensagem += " Sua pressão está normal.";
+            } else if ((sistolica >= 120 && sistolica < 130) && (diastolica >= 80 && diastolica < 85)) {
+                mensagem += " Você está com pré-hipertensão.";
+            } else if ((sistolica >= 130 && sistolica < 140) && (diastolica >= 85 && diastolica < 90)) {
+                mensagem += " Você está com hipertensão estágio 1.";
+            } else if ((sistolica >= 140 && sistolica < 180) && (diastolica >= 90 && diastolica < 120)) {
+                mensagem += " Você está com hipertensão estágio 2.";
+            } else {
+                mensagem += " Você está em crise hipertensiva.";
+            }
+
+            resultadoDiv.innerHTML = mensagem;
         }
-
-
-        
-    }
-
-     function classificarPressao(pressaoSistolica, pressaoDiastolica)
-    {
-        if (pressaoSistolica < 90 || pressaoDiastolica < 60) {
-            return 'Baixa';
-        } elseif ((pressaoSistolica >= 140 || pressaoDiastolica >= 90) && (pressaoSistolica < 180 && pressaoDiastolica < 120)) {
-            return 'Alta';
-        } else {
-            return 'Normal';
-        }
-    }
-
-    function exibirModal(resultado) {
-        const modalBody = document.getElementById('resulExame');
-        modalBody.innerHTML = `<p>${resultado}</p>`:
-
-
-    }
-
-</script>
+    </script>
 
     <!-- Footer-->
     <footer class="footer text-center">
