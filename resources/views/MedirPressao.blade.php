@@ -29,7 +29,7 @@
                     <ul class="navbar-nav ms-auto">
                         
                         <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="/duvidas">Dúvidas</a></li>
-                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="/suporte">Suporte</a></li>
+                        
                         
                 @if (Route::has('login'))
                 <div class="navbar-nav ms-auto">
@@ -45,7 +45,7 @@
                     @endauth
                 </div>
                 @endif
-                </div>>
+                </div>
             </div>
     </nav>
         <!-- Pressao Section--> 

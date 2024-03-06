@@ -22,7 +22,7 @@ Route::get('/', function () {
 
 //Route::get('/dashboard2',[HistoricotbController::class,'showPressao'])->middleware(['auth', 'verified'])->name('dashboard');
 //Route::get('/dashboard',[HistoricotbController::class,'showColesterol'])->middleware(['auth', 'verified'])->name('dashboard');
-Route::get('/dashboard',[HistoricotbController::class,'showGlicose'])->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/dashboard',[HistoricotbController::class,'showExames'])->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::post('/historicoadd1',[HistoricotbController::class,'storePressao'])->name('cadastrar-pressao');
 Route::post('/historicoadd2',[HistoricotbController::class,'storeColesterol'])->name('cadastrar-colesterol');

@@ -1,132 +1,153 @@
-
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-        <meta name="description" content="" />
-        <meta name="author" content="" />
-        <title>Projeto saúde</title>
-        <!-- Favicon-->
-        <link rel="icon" type="image/x-icon" href="imagens/icon.png" />
-        <!-- Font Awesome icons (free version)-->
-        <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
-        <!-- Google fonts-->
-        <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
-        <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
-        <!-- Core theme CSS (includes Bootstrap)-->
-        <link href="css/styles.css" rel="stylesheet" />
-    </head>
-    <header>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Projeto saúde</title>
+    <!-- Favicon-->
+    <link rel="icon" type="image/x-icon" href="imagens/icon.png" />
+    <!-- Font Awesome icons (free version)-->
+    <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+    <!-- Google fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet"
+        type="text/css" />
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="css/styles.css" rel="stylesheet" />
+</head>
+<header>
+
     <body id="page-top">
         <!-- Navigation-->
         <nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/index.php') }}">Minha Conta</a>
-                <button class="navbar-toggler text-uppercase font-weight-bold bg-primary text-white rounded" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                <button class="navbar-toggler text-uppercase font-weight-bold bg-primary text-white rounded"
+                    type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive"
+                    aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                     Menu
                     <i class="fas fa-bars"></i>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ms-auto">
-                        
-                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="/duvidas">Dúvidas</a></li>
-                        
-                        @if (Route::has('login'))
-                        <div class="navbar-nav ms-auto">
-                            @auth
 
-                    @else
-                    <li class="nav-item mx-0 mx-lg-1"><a href="{{ route('login') }}" class="nav-link py-3 px-0 px-lg-3 rounded">Login</a></li>
- 
-                        @if (Route::has('register'))
-                        <li class="nav-item mx-0 mx-lg-1"><a href="{{ route('register') }}" class="nav-link py-3 px-0 px-lg-3 rounded">Cadastro</a></li>
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded"
+                                href="/duvidas">Dúvidas</a></li>
+
+                        @if (Route::has('login'))
+                            <div class="navbar-nav ms-auto">
+                                @auth
+                                @else
+                                    <li class="nav-item mx-0 mx-lg-1"><a href="{{ route('login') }}"
+                                            class="nav-link py-3 px-0 px-lg-3 rounded">Login</a></li>
+
+                                    @if (Route::has('register'))
+                                        <li class="nav-item mx-0 mx-lg-1"><a href="{{ route('register') }}"
+                                                class="nav-link py-3 px-0 px-lg-3 rounded">Cadastro</a></li>
+                                    @endif
+                                @endauth
+                            </div>
                         @endif
-                    @endauth
                 </div>
-                @endif
-                </div>>
             </div>
         </nav>
-<x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            {{ __('Dashboard') }}
-        </h2>
-    </x-slot>
+        <x-app-layout>
+            <x-slot name="header">
+                <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
+                    {{ __('Dashboard') }}
+                </h2>
+            </x-slot>
 
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 text-gray-900 dark:text-gray-100">
-                    {{ __("You're logged in!") }}
+            <div class="py-12">
+                <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+                    <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
+                        <div class="p-6 text-gray-900 dark:text-gray-100">
+                            {{ __("You're logged in!") }}
+                        </div>
+                    </div>
                 </div>
             </div>
+        </x-app-layout>
+
+
+        <!-- inicia o historico-->
+        <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Historico</h2>
+
+
+
+
+        <h1>Glicose</h1>
+        <div>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Glicose</th>
+                        <th scope="col">Data</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach ($glicosetb as $glicoseArray)
+                        <tr>
+                            
+                            <td>{{ $glicoseArray->glicose }}</td>
+                            <td>{{ $glicoseArray->created_at}}</td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
         </div>
-    </div>
-</x-app-layout>
 
+        <h1>Pressão Arterial</h1>
+        <div>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Sistólica</th>
+                        <th scope="col">Diastólica</th>
+                        <th scope="col">Data</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach ($pressaoarterialtb as $pressaoarterialArray)
+                        <tr>
+                            
+                            <td>{{ $pressaoarterialArray->sistolica }}</td>
+                            <td>{{ $pressaoarterialArray->diastolica }}</td>
+                            <td>{{ $pressaoarterialArray->created_at}}</td>
+                        </tr>
+                    @endforeach
+                </tbody>
 
-<!-- inicia o historico-->
-<h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Historico</h2>
+            </table>
+        </div>
+        <h1>Colesterol</h1>
+        <div>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Valor HDL</th>
+                        <th scope="col">Valor LDL</th>
+                        <th scope="col">Data</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach ($colesteroltb as $colesterolArray)
+                        <tr>
+                            <td>{{ $colesterolArray->colesterol_HDL}}</td>
+                            <td>{{ $colesterolArray->colesterol_LDL}}</td>
+                            <td>{{ $colesterolArray->created_at}}</td>
+                        </tr>
+                    @endforeach
+                </tbody>
 
-
-
-
-
-Glicose
-</h1>
-
-<div>
-  <table class="table">
-    <thead>
-      <tr>
-        <th scope="col">Glicose</th>
-      </tr>
-    </thead>
-    <tbody>
-  @foreach ($glicosetb as $glicoseArray)
-      <tr>
-        <th scope="row">---</th>
-        <td>{{ $glicoseArray->glicose }}</td>
-      </tr>
-     @endforeach
-    </tbody>
-  </table>
-</div>    
-
-<h1>
-    Pressão Arterial
-</h1>
-<div>
-  <table class="table">
-    <thead>
-      <tr>
-        <th scope="col">Sistólica</th>
-        <th scope="col">Diastólica</th>
+            </table>
+        </div>
        
-      </tr>
-    </thead>
-    <tbody>
-        
- @foreach ($pressaoarterialtb as $pressaoarterialArray)
-    
-      <tr>
-        <th scope="row">---</th>
-       
-        <td>{{ $pressaoarterialArray->sistolica }}</td>
-        <td>{{ $pressaoarterialArray->diastolica }}</td>
-      </tr>
-
-     @endforeach
-    </tbody>
-    
-  </table>
-</div>  
-
-
-<!-- Footer-->
-<footer class="footer text-center">
+        <!-- Footer-->
+        <footer class="footer text-center">
             <div class="container">
                 <div class="row">
                     <!-- Footer Location-->
@@ -138,7 +159,7 @@ Glicose
                             Clark, MO 65243
                         </p>
                     </div>
-                    
+
                     <!-- Footer About Text-->
                     <div class="col-lg-4">
                         <h4 class="text-uppercase mb-4">About Freelancer</h4>
@@ -165,4 +186,5 @@ Glicose
         <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
         <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
     </body>
+
 </html>

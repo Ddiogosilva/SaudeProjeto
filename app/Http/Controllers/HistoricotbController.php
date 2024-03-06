@@ -7,6 +7,9 @@ use Illuminate\Http\Request;
 use App\Models\pressaoarterialtb;
 use App\Models\colesteroltb;
 use App\Models\glicosetb;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Validation\ValidationException;
+
 
 class HistoricotbController extends Controller
 {
@@ -24,14 +27,18 @@ class HistoricotbController extends Controller
         return redirect::route('dashboard');
     }
     public function storeColesterol(Request $request){
-        $colesterol= $request->validate([
+        
+        $colesterol=$request->validate([
             'iduser'=>'integer|required',
             'colesterol_HDL'=>'string',
             'colesterol_LDL'=>'string',
         ]);
-        colesteroltb::create($colesterol);
+        dd($colesterol);
+        colesteroltb::create($recebeDados); 
         return redirect::route('dashboard');
     }
+    
+    
     
     public function storeGlicose(Request $request){
         $glicose= $request->validate([
@@ -45,43 +52,41 @@ class HistoricotbController extends Controller
     
 
     //-----------------------------------Show historico 
-    public function showPressao(Request $request){
-       $dadospressao= pressaoarterialtb::query();
-       $dadospressao->when($request->iduser,function($query,$id){
-        $query->where('iduser', 'like' , '%'.$id.'%');
-       });
 
-       $dadospressao = $dadospressao->get();
-
-       return view('dashboard', ['pressaoarterialtb' => $dadospressao]);
-    }
-
-    public function showColesterol(Request $request){
-        $dadoscolesterol= colesteroltb::query();
-        $dadoscolesterol->when($request->iduser,function($query,$id){
-         $query->where('iduser', 'like' , $id);
-        });
- 
-        $dadoscolesterol = $dadoscolesterol->get();
-
-        return view('dashboard', ['colesteroltb' => $dadoscolesterol]);
-     }
-
-    public function showGlicose(Request $request){
+    public function showExames(Request $request){
+        //------------------------------- Todos os Dados de Glicose 
         $dadosglicose= glicosetb::query();
         $dadosglicose->when($request->iduser,function($query,$id){
          $query->where('iduser', 'like' , '%'.$id.'%');
         });
- 
         $dadosglicose = $dadosglicose->get();
 
-        return view('dashboard', ['glicosetb' => $dadosglicose]);
+        //------------------------------- Todos os Dados do Colesterol 
+        $dadoscolesterol= colesteroltb::query();
+        $dadoscolesterol->when($request->iduser,function($query,$id){
+         $query->where('iduser', 'like' , $id);
+        });
+        $dadoscolesterol = $dadoscolesterol->get();
+
+        //------------------------------- Todos os Dados de Pressão 
+        $dadospressao= pressaoarterialtb::query();
+       $dadospressao->when($request->iduser,function($query,$id){
+        $query->where('iduser', 'like' , '%'.$id.'%');
+       });
+       $dadospressao = $dadospressao->get();
+
+
+        return view('dashboard', [
+            'glicosetb' => $dadosglicose,
+            'pressaoarterialtb' => $dadospressao,
+            'colesteroltb' => $dadoscolesterol
+        ]);
     }
 
 
     
     
-    
+    /*
     public function destroy(historicotb $NomeFK){
         $NomeFK->delete();
         return redirect::route('historicotodos');
@@ -107,5 +112,5 @@ class HistoricotbController extends Controller
 
     public function show(historico $nome){
         return view('historicotodos', ['historicotb'=> $nome]);
-    }
+    }*/
 }

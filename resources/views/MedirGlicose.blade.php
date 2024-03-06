@@ -37,15 +37,13 @@
 
                         <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded"
                                 href="/duvidas">Dúvidas</a></li>
-                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded"
-                                href="/suporte">Suporte</a></li>
-                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded"
-                                href="#">Histórico</a></li>
+                      
+                        
                         @if (Route::has('login'))
-                            <div class="navbar-nav ms-auto">
+                            <di v class="navbar-nav ms-auto">
                                 @auth
                                     <li class="nav-item mx-0 mx-lg-1"><a href="{{ url('/dashboard') }}"
-                                            class="nav-link py-3 px-0 px-lg-3 rounded">minha Conta</a></li>
+                                            class="nav-link py-3 px-0 px-lg-3 rounded">Minha Conta</a></li>
                                 @else
                                     <li class="nav-item mx-0 mx-lg-1"><a href="{{ route('login') }}"
                                             class="nav-link py-3 px-0 px-lg-3 rounded">Login</a></li>
@@ -55,7 +53,7 @@
                                                     class="nav-link py-3 px-0 px-lg-3 rounded">Cadastro</a></li>
                                         @endif
                                     @endauth
-                                </div>
+                                </di>
                             @endif
                         </ul>
                     </div>
