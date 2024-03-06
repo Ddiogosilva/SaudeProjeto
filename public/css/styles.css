@@ -78,6 +78,17 @@
   --bs-code-color: #d63384;
   --bs-highlight-bg: #fff3cd;
 }
+
+.regi{
+  width: 15vw;
+  display: flex;
+  justify-content: center;
+  margin: 5vw 10vh;
+}
+.botao{
+ 
+  background: #10715e;
+}
 .header{
   position:fixed;
 }

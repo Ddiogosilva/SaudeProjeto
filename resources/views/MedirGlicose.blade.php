@@ -73,7 +73,7 @@
                 <label for="inputEmail4" class="form-label">Inserir valor</label>
                 <input class="form-control" id="valor_glicemia" type="number" name="glicose"
                     data-sb-validations="required" />
-
+                
                 <button type="submit" onclick="calcularExame()" class="btn btn-primary" data-bs-toggle="modal"
                     data-bs-target="#modalGlicose">Enviar</button>
                     
@@ -98,14 +98,10 @@
                             <h2 class="portfolio-modal-title text-secondary text-uppercase mb-0">Resultado:</h2>
                             <!-- Icon Divider-->
                             <p></p>
-                            <h2>ATENÇÃO, os resultados não substituí seu acompanhamento com médico.</h2>
+                            <h3>ATENÇÃO, os resultados não substituí seu acompanhamento com médico.</h3>
                             
                             <div class="modal_resul" id="resulExame">
                             <!-- Imagem da Modal -->
-                            
-                            
-                            
-
                             </div class="" method= "post" >
                             @if (Route::has('login'))
                                 @auth
