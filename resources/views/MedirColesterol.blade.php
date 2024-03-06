@@ -95,10 +95,14 @@
                         @endif
                     @endauth
                 @endif
-
             </div>
+        </form>
+        <div class="portfolio-item mx-150" data-bs-toggle="modal" data-bs-target="#modalColesterol">
+                <button class="btn btn-primary" onclick="calculoColesterol()">Resultado</button>
+                </div>    
+       
         </section>
-    </form>
+    
 
 
     <!---------- Modal RESULTADO --->
@@ -119,11 +123,25 @@
                                     <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
                                     <div class="divider-custom-line"></div>
                                 </div>
+                                <!-- Imagem da Modal -->
+                                <form method= "post" action="{{ route('cadastrar-colesterol') }}">
+                                    <div class="modal_resul" id="resulExame">
 
-                                <div class="modal_resul" id="resultado"></div>
+                                    </div>
+                                    @if (Route::has('login'))
+                                        @auth
+                                            <a href="{{ route('cadastrar-colesterol') }}"
+                                                class="btn btn-primary">Salvar</a>
+                                        @else
+                                            @if (Route::has('register'))
+                                                <a href="{{ route('register') }}" class="btn btn-primary">Salvar</a>
+                                            @endif
+                                        @endauth
+                                    @endif
+                                    <a class="btn btn-primary" data-bs-dismiss="modal" role="button"></i>Agora
+                                        não </a>
 
-                            
-                                <a class="btn btn-primary" data-bs-dismiss="modal" role="button"></i>Agora não </a>
+                                </form>
                             </div>
                         </div>
                     </div>
@@ -131,7 +149,8 @@
             </div>
         </div>
     </div>
-    
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
 
 
     <script>

@@ -11,6 +11,8 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\ValidationException;
 
 
+
+
 class HistoricotbController extends Controller
 {
     
@@ -26,15 +28,49 @@ class HistoricotbController extends Controller
         pressaoarterialtb::create($pressao);
         return redirect::route('dashboard');
     }
-    public function storeColesterol(Request $request){
+
+
+public function storeColesterol(Request $request)
+{
+    try {
+        // Validação dos dados
+        $colesterol = $request->validate([
+            'iduser' => 'integer|required',
+            'colesterol_HDL' => 'string',
+            'colesterol_LDL' => 'string',
+        ]);
+
+        // Inserção no banco de dados
+        DB::beginTransaction();
+
+        colesteroltb::create($colesterol);
+
+        DB::commit();
+
+        return redirect()->route('dashboard');
+    } catch (ValidationException $e) {
+        // Tratamento de exceção para erros de validação
+        return redirect()->back()->withErrors($e->errors())->withInput();
+    } catch (\Exception $e) {
+        // Tratamento de exceção para outros erros
+        DB::rollBack(); // Reverte qualquer alteração no banco de dados
+
+        // Log de erro
+        \Log::error('Erro no cadastro: ' . $e->getMessage());
+
+        return redirect()->back()->with('error', 'Ocorreu um erro ao processar a solicitação.');
+    }
+}
+    public function storeColesterol1(Request $request){
         
         $colesterol=$request->validate([
             'iduser'=>'integer|required',
             'colesterol_HDL'=>'string',
             'colesterol_LDL'=>'string',
         ]);
+
         dd($colesterol);
-        colesteroltb::create($recebeDados); 
+        colesteroltb::create($colesterol); 
         return redirect::route('dashboard');
     }
     
