@@ -91,8 +91,7 @@
                 <tbody>
                     @foreach ($glicosetb as $glicoseArray)
                         <tr>
-                            
-                            <td>{{ $glicoseArray->glicose }}</td>
+                            <td>{{ $glicoseArray->glicose}}</td>
                             <td>{{ $glicoseArray->created_at}}</td>
                         </tr>
                     @endforeach

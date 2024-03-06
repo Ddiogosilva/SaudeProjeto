@@ -72,19 +72,22 @@
                 <!-- Portfolio Section Heading-->
                 <h1>INSERIR TAXAS DE VALORES</h1><!--onde vai ficar o conteúdo-->
                 <div class="form-floating mb-3">
-                    <input class="form-control" id="HDL" type="number" name="HDL"
+                    <input class="form-control" id="HDL" type="number" name="colesterol_HDL"
                         placeholder="Digite primeiro valor aqui..." data-sb-validations="required" />
                     <label for="HDL">Inserir primeiro valor aqui</label>
                     <div class="invalid-feedback" data-sb-feedback="name:required">Um valor é necessário.</div>
                 </div>
                 <div class="form-floating mb-3">
-                    <input class="form-control" id="LDL" type="number" name="LDL"
+                    <input class="form-control" id="LDL" type="number" name="colesterol_LDL"
                         placeholder="Digite o Segundo valor..." data-sb-validations="required" />
                     <label for="LDL">Inserir Segundo valor aqui</label>
                     <div class="invalid-feedback" data-sb-feedback="name:required">Um valor é necessário.</div>
                 </div>
+                <input class="form-control" id="id_User" type="hidden" name="iduser" value="{{ Auth::user()->id }}" data-sb-validations="required" />
+
+
                 <button type="button" onclick="calcularColesterol()" class="btn btn-primary" data-bs-toggle="modal"
-                             data-bs-target="#modalColesterol">resultado</button>
+                             data-bs-target="#modalColesterol">Resultado </button>
                 @if (Route::has('login'))
                     @auth
                         <button type="submit" class="btn btn-primary">Salvar</button>
@@ -97,9 +100,7 @@
                 @endif
             </div>
         </form>
-        <div class="portfolio-item mx-150" data-bs-toggle="modal" data-bs-target="#modalColesterol">
-                <button class="btn btn-primary" onclick="calculoColesterol()">Resultado</button>
-                </div>    
+         
        
         </section>
     
@@ -124,22 +125,9 @@
                                     <div class="divider-custom-line"></div>
                                 </div>
                                 <!-- Imagem da Modal -->
-                                <form method= "post" action="{{ route('cadastrar-colesterol') }}">
-                                    <div class="modal_resul" id="resulExame">
-
-                                    </div>
-                                    @if (Route::has('login'))
-                                        @auth
-                                            <a href="{{ route('cadastrar-colesterol') }}"
-                                                class="btn btn-primary">Salvar</a>
-                                        @else
-                                            @if (Route::has('register'))
-                                                <a href="{{ route('register') }}" class="btn btn-primary">Salvar</a>
-                                            @endif
-                                        @endauth
-                                    @endif
-                                    <a class="btn btn-primary" data-bs-dismiss="modal" role="button"></i>Agora
-                                        não </a>
+                                <div id="resultado"></div>
+                                
+                                    <a class="btn btn-primary" data-bs-dismiss="modal" role="button"></i>Fechar</a>
 
                                 </form>
                             </div>

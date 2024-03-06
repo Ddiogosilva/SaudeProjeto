@@ -50,9 +50,12 @@
     </nav>
         <!-- Pressao Section--> 
         <section class="page-section pressao" id="pressao" >
+        <form action="{{ route('cadastrar-pressao') }} " method="POST">
+        @csrf
             <div class="container">
                     <!-- Portfolio Section Heading-->
                     <h1>INSERIR TAXAS DE VALORES</h1>
+                    
                     <div class="form-floating mb-3">
                         <input class="form-control" id="sistolica" type="number" name="sistolica" placeholder="Digite primeiro valor aqui..." data-sb-validations="required" />
                         <label for="sistolica">Inserir primeiro valor aqui</label>
@@ -60,10 +63,12 @@
                     </div>
                 <div class="form-floating mb-3">
                     <input class="form-control" id="diastolica" type="number" name="diastolica" placeholder="Digite o Segundo valor..." data-sb-validations="required" />
-                    <label for="diastolica">Inserir Segundo valor aqui</label>
+                    <label for="diastolica">Inserir Segundo valor aqui</label> 
                     <div class="invalid-feedback" data-sb-feedback="name:required">Um valor é necessário.</div>
                 </div>
-                <button onclick="calcularPressao()" class="btn btn-primary"data-bs-toggle="modal" data-bs-target="#modalPressao">Enviar</button>
+                <input class="form-control" id="id_User" type="hidden" name="iduser" value="{{ Auth::user()->id }}" data-sb-validations="required" />
+
+                <button type="button"onclick="calcularPressao()" class="btn btn-primary"data-bs-toggle="modal" data-bs-target="#modalPressao">Resultado</button>
                 @if (Route::has('login'))
                     @auth
                         <button type="submit" class="btn btn-primary">Salvar</button>
@@ -74,8 +79,8 @@
                         @endif
                     @endauth
                 @endif
-                
             </div>
+        </form>
         </section>
       
 

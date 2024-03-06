@@ -22,8 +22,8 @@ class HistoricotbController extends Controller
     public function storePressao(Request $request){
         $pressao= $request->validate([
             'iduser'=>'integer|required',
-            'sistolica'=>'string',
-            'diastolica'=>'string'
+            'sistolica'=>'integer',
+            'diastolica'=>'integer'
         ]);
         pressaoarterialtb::create($pressao);
         return redirect::route('dashboard');
@@ -32,58 +32,30 @@ class HistoricotbController extends Controller
 
 public function storeColesterol(Request $request)
 {
-    try {
+
+    
         // Validação dos dados
         $colesterol = $request->validate([
             'iduser' => 'integer|required',
-            'colesterol_HDL' => 'string',
-            'colesterol_LDL' => 'string',
+            'colesterol_HDL' => 'integer',
+            'colesterol_LDL' => 'integer',
         ]);
-
-        // Inserção no banco de dados
-        DB::beginTransaction();
 
         colesteroltb::create($colesterol);
 
-        DB::commit();
-
-        return redirect()->route('dashboard');
-    } catch (ValidationException $e) {
-        // Tratamento de exceção para erros de validação
-        return redirect()->back()->withErrors($e->errors())->withInput();
-    } catch (\Exception $e) {
-        // Tratamento de exceção para outros erros
-        DB::rollBack(); // Reverte qualquer alteração no banco de dados
-
-        // Log de erro
-        \Log::error('Erro no cadastro: ' . $e->getMessage());
-
-        return redirect()->back()->with('error', 'Ocorreu um erro ao processar a solicitação.');
-    }
+       return redirect()->route('dashboard');
+    
 }
-    public function storeColesterol1(Request $request){
-        
-        $colesterol=$request->validate([
-            'iduser'=>'integer|required',
-            'colesterol_HDL'=>'string',
-            'colesterol_LDL'=>'string',
-        ]);
-
-        dd($colesterol);
-        colesteroltb::create($colesterol); 
-        return redirect::route('dashboard');
-    }
-    
-    
+   
     
     public function storeGlicose(Request $request){
         $glicose= $request->validate([
             'iduser'=>'integer|required',
-            'glicose'=>'string',
+            'glicose'=>'integer',
            
         ]);
         glicosetb::create($glicose);
-        return view('dashboard');
+        return redirect()->route('dashboard');
     }
     
 
@@ -102,6 +74,7 @@ public function storeColesterol(Request $request)
         $dadoscolesterol->when($request->iduser,function($query,$id){
          $query->where('iduser', 'like' , $id);
         });
+       
         $dadoscolesterol = $dadoscolesterol->get();
 
         //------------------------------- Todos os Dados de Pressão 

@@ -70,93 +70,27 @@
                 <img class="img-fluid rounded mb-5" src="/imagens/medidorGlicose.png" alt="..." />
             </aside>
             <div class="col-md-3">
-                <label for="inputEmail4" class="form-label">Inserir valor</label>
+                <label for="glicose" class="form-label">Inserir valor</label>
                 <input class="form-control" id="valor_glicemia" type="number" name="glicose"
                     data-sb-validations="required" />
-
-                <button type="submit" onclick="calcularExame()" class="btn btn-primary" data-bs-toggle="modal"
-                    data-bs-target="#modalGlicose">Enviar</button>
-                    
+                    <input class="form-control" id="id_User" type="hidden" name="iduser" value="{{ Auth::user()->id }}" data-sb-validations="required" />
+                <button type="button" onclick="calcularExame()" class="btn btn-primary" data-bs-toggle="modal"
+                    data-bs-target="#modalGlicose">Resultado</button>
+                    @if (Route::has('login'))
+                    @auth
+                        <button type="submit" class="btn btn-primary">Salvar</button>
+                         
+                    @else
+                        @if (Route::has('register'))
+                            <a href="{{ route('register') }}" class="btn btn-primary">Salvar</a>
+                        @endif
+                    @endauth
+                @endif
             </div>
         </form>
     </div>
 </section>
 
-
-<!------------- Modal RESULTADO --->
-<div class="portfolio-modal modal fade" id="modalGlicose" tabindex="-1" aria-labelledby="modalGlicose" 
-    aria-hidden="true">
-    <div class="modal-dialog modal-xl">
-        <div class="modal-content">
-            <div class="modal-header border-0"><button class="btn-close" type="button" data-bs-dismiss="modal"
-                    aria-label="Close"></button></div>
-            <div class="modal-body text-center pb-5">
-                <div class="container">
-                    <div class="row justify-content-center">
-                        <div class="col-lg-8">
-                            <!-- Modal - Title-->
-                            <h2 class="portfolio-modal-title text-secondary text-uppercase mb-0">Resultado:</h2>
-                            <!-- Icon Divider-->
-                            <p></p>
-                            <h3>ATENÇÃO, os resultados não substituí seu acompanhamento com médico.</h3>
-                            
-                            <div class="modal_resul" id="resulExame">
-                            <!-- Imagem da Modal -->
-                            </div class="" method= "post" >
-                            @if (Route::has('login'))
-                                @auth
-                                
-                                <a action="{{ route('cadastrar-glicose') }}"href=" {{ url('/dashboard') }}" class="btn btn-primary" onclick="calcularExame()">Salvar</a>
-                                @else
-                                    @if (Route::has('register'))
-                                        <a href="{{ route('register') }}" class="btn btn-primary">Salvar</a>
-                                    @endif
-                                @endauth
-                            @endif
-                            <a class="btn btn-primary" data-bs-dismiss="modal" role="button"></i>Agora não </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-  
-
-
-
-
-<script>
-    function calcularExame() {
-        const valorGlicemia = document.getElementById('valor_glicemia').value;
-
-        if (valorGlicemia !== '') {
-            const resultado = interpretarResultadoGlicemia(valorGlicemia);
-            exibirModal(resultado);
-        }else{
-            return "valor nulo não é permitido";
-        }
-    }
-    
-    function interpretarResultadoGlicemia(valorGlicose) {
-        if (valorGlicose < 70) {
-            return "Hipoglicemia";
-        } else if (valorGlicose >= 70 && valorGlicose <= 100) {
-            return "Níveis normais";
-        } else if (valorGlicose > 100 && valorGlicose <= 125) {
-            return "Pré-diabetes";
-        } else {
-            return "Diabetes";
-        }
-    }
-
-    function exibirModal(resultado) {
-        const modalBody = document.getElementById('resulExame');
-        modalBody.innerHTML = `<p>${resultado}</p>`;
-
-
-    }
-</script>
 
 <!-- Footer-->
 <footer class="footer text-center">
@@ -205,3 +139,68 @@
 
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+<!------------- Modal RESULTADO --->
+<div class="portfolio-modal modal fade" id="modalGlicose" tabindex="-1" aria-labelledby="modalGlicose" 
+    aria-hidden="true">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+            <div class="modal-header border-0"><button class="btn-close" type="button" data-bs-dismiss="modal"
+                    aria-label="Close"></button></div>
+            <div class="modal-body text-center pb-5">
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-8">
+                            <!-- Modal - Title-->
+                            <h2 class="portfolio-modal-title text-secondary text-uppercase mb-0">Resultado:</h2>
+                            <!-- Icon Divider-->
+                            <p></p>
+                            <h3>ATENÇÃO, os resultados não substituí seu acompanhamento com médico.</h3>
+                            
+                            <div class="modal_resul" id="resulExame">
+                            <!-- Imagem da Modal -->
+                           
+                            <a class="btn btn-primary" data-bs-dismiss="modal" role="button"></i>Fechar </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+  
+
+
+
+
+<script>
+    function calcularExame() {
+        const valorGlicemia = document.getElementById('valor_glicemia').value;
+
+        if (valorGlicemia !== '') {
+            const resultado = interpretarResultadoGlicemia(valorGlicemia);
+            exibirModal(resultado);
+        }else{
+            return "valor nulo não é permitido";
+        }
+    }
+    
+    function interpretarResultadoGlicemia(valorGlicose) {
+        if (valorGlicose < 70) {
+            return "Hipoglicemia";
+        } else if (valorGlicose >= 70 && valorGlicose <= 100) {
+            return "Níveis normais";
+        } else if (valorGlicose > 100 && valorGlicose <= 125) {
+            return "Pré-diabetes";
+        } else {
+            return "Diabetes";
+        }
+    }
+
+    function exibirModal(resultado) {
+        const modalBody = document.getElementById('resulExame');
+        modalBody.innerHTML = `<p>${resultado}</p>`;
+
+
+    }
+</script>
