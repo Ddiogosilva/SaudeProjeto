@@ -95,31 +95,5 @@ public function storeColesterol(Request $request)
 
     
     
-    /*
-    public function destroy(historicotb $NomeFK){
-        $NomeFK->delete();
-        return redirect::route('historicotodos');
-        
-    }
-
-
-    public function update(historico $id, Request $request){
-        $historico = $request->validate([
-            'iduser'=>'integer|required',
-            'nome'=>'string|required',
-            'colesterol_HDL'=>'string',
-            'colesterol_LDL'=>'string',
-            'glicemia'=>'string',
-            'pressao'=>'string'
-        ]);
-
-        $id->fill($historico);
-        $id->save();
-        return redirect::route('historicotodos');
-    }
-
-
-    public function show(historico $nome){
-        return view('historicotodos', ['historicotb'=> $nome]);
-    }*/
+    
 }
