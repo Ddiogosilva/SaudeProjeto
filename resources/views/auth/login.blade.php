@@ -50,7 +50,7 @@
                                 <li class="nav-item mx-0 mx-lg-1"><a href="{{ route('register') }}"
                                     class="nav-link py-3 px-0 px-lg-3 rounded">Cadastro</a></li>
                         <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded"
-                                href="Duvidas.html">Dúvidas</a></li>
+                                href="/duvidas">Dúvidas</a></li>
                     </ul>
                 </div>
             </div>
@@ -114,6 +114,48 @@
     </x-guest-layout>
     <!------------------------------------------------------------------------>
     <!--Footer-->
+    <!-- Footer-->
+<footer class="footer text-center">
+        <div class="container">
+            <div class="row">
+                <!-- Footer Location-->
+                <div class="col-lg-4 mb-5 mb-lg-0">
+                    <h4 class="text-uppercase mb-4">Senac sbc</h4>
+                    <p class="lead mb-0">
+                        TI16M 2024
+                        <br />
+                        Projeto Saúde
+                    </p>
+                </div>
+                <!-- Footer Social Icons-->
+                <div class="col-lg-4 mb-5 mb-lg-0">
+                    <h4 class="text-uppercase mb-4">Redes sociais</h4>
+                    <a class="btn btn-outline-light btn-social mx-1" href="#!"><i
+                            class="fab fa-fw fa-facebook-f"></i></a>
+                    <a class="btn btn-outline-light btn-social mx-1" href="#!"><i
+                            class="fab fa-fw fa-twitter"></i></a>
+                    <a class="btn btn-outline-light btn-social mx-1" href="#!"><i
+                            class="fab fa-fw fa-linkedin-in"></i></a>
+                    <a class="btn btn-outline-light btn-social mx-1" href="#!"><i
+                            class="fab fa-fw fa-dribbble"></i></a>
+                </div>
+                <!-- Footer About Text-->
+                <div class="col-lg-4">
+                    <h4 class="text-uppercase mb-4"></h4>
+                    <p class="lead mb-0">
+                        Para entender mais sobre o nosso propósito, temos o WordPress como documentação com mais
+                        detalhes de autores...
+                        <a href="http://startbootstrap.com">Saiba mais</a><!--COLOCAR O LINK DO WORDPRESS AQUI-->
+                        .
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- Copyright Section-->
+    <div class="copyright py-4 text-center text-white">
+        <div class="container"><small>Copyright &copy; Medtech 2024</small></div>
+    </div>
     <!-- Bootstrap core JS-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
     <!-- Core theme JS-->
@@ -124,12 +166,7 @@
     <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
     <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
 
-    <!-- Copyright Section-->
-    <footer>
-        <div class="copyright py-4 text-center text-white">
-            <div class="container"><small>Copyright &copy; Medtech 2024</small></div>
-        </div>
-    </footer>
+ 
 </body>
 
 </html>

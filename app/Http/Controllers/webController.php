@@ -48,7 +48,7 @@ class webController extends Controller
  
     $msg = "<strong>Nome: </strong>" . $nome . "<br />";
     $msg .= "<strong>E-mail: </strong>" . $email . "<br />";
-    //$msg .= "<strong>Departamento: </strong>" . $dpto . "<br />";
+    
     $msg .= "<strong>Mensagem: </strong>" . $mensagem . "<br />";
  
     $mensagem = $msg;
@@ -65,7 +65,7 @@ class webController extends Controller
        echo "<script>window.location.href='/index'</script>";
     }
 
-    return view('index');
+    return redirect('index');
     }
 
 

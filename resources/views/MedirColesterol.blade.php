@@ -74,16 +74,16 @@
                 <div class="form-floating mb-3">
                     <input class="form-control" id="HDL" type="number" name="colesterol_HDL"
                         placeholder="Digite primeiro valor aqui..." data-sb-validations="required" />
-                    <label for="HDL">Inserir primeiro valor aqui</label>
+                    <label for="HDL">Inserir HDL aqui</label>
                     <div class="invalid-feedback" data-sb-feedback="name:required">Um valor é necessário.</div>
                 </div>
                 <div class="form-floating mb-3">
                     <input class="form-control" id="LDL" type="number" name="colesterol_LDL"
                         placeholder="Digite o Segundo valor..." data-sb-validations="required" />
-                    <label for="LDL">Inserir Segundo valor aqui</label>
+                    <label for="LDL">Inserir LDL aqui</label>
                     <div class="invalid-feedback" data-sb-feedback="name:required">Um valor é necessário.</div>
                 </div>
-                <input class="form-control" id="id_User" type="hidden" name="iduser" value="{{ Auth::user()->id }}" data-sb-validations="required" />
+                
 
 
                 <button type="button" onclick="calcularColesterol()" class="btn btn-primary" data-bs-toggle="modal"
@@ -91,7 +91,7 @@
                 @if (Route::has('login'))
                     @auth
                         <button type="submit" class="btn btn-primary">Salvar</button>
-                         
+                        <input class="form-control" id="id_User" type="hidden" name="iduser" value="{{ Auth::user()->id }}" data-sb-validations="required" />
                     @else
                         @if (Route::has('register'))
                             <a href="{{ route('register') }}" class="btn btn-primary">Salvar</a>

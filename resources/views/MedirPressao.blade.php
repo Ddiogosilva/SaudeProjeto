@@ -66,13 +66,13 @@
                     <label for="diastolica">Inserir Segundo valor aqui</label> 
                     <div class="invalid-feedback" data-sb-feedback="name:required">Um valor é necessário.</div>
                 </div>
-                <input class="form-control" id="id_User" type="hidden" name="iduser" value="{{ Auth::user()->id }}" data-sb-validations="required" />
+                
 
                 <button type="button"onclick="calcularPressao()" class="btn btn-primary"data-bs-toggle="modal" data-bs-target="#modalPressao">Resultado</button>
                 @if (Route::has('login'))
                     @auth
                         <button type="submit" class="btn btn-primary">Salvar</button>
-                        
+                        <input class="form-control" id="id_User" type="hidden" name="iduser" value="{{ Auth::user()->id }}" data-sb-validations="required" />
                     @else
                         @if (Route::has('register'))
                             <a href="{{ route('register') }}" class="btn btn-primary">Salvar</a>

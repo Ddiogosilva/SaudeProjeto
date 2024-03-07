@@ -80,7 +80,7 @@
 }
 
 .regi{
-  width: 15vw;
+  width: 150vw;
   display: flex;
   justify-content: center;
   margin: 5vw 10vh;
@@ -91,6 +91,20 @@
 }
 .header{
   position:fixed;
+}
+.regi{
+  width: 45vw;
+  display: flex;
+  justify-content: center;
+  margin: 8vw 8vh;
+}
+.botao{
+ 
+  background: #10715e;
+}
+.cadast{
+  width: 20vw;
+  height: 20vh;
 }
 
 .login{
